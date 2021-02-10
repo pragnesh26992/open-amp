@@ -25,6 +25,7 @@
 #include <metal/utilities.h>
 #include <openamp/remoteproc.h>
 #include <openamp/rpmsg_virtio.h>
+#include <errno.h>
 #include <string.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -34,6 +35,16 @@
 #define RPU_CPU_ID          0 /* RPU remote CPU Index. We only talk to
                                * one CPU in the exmaple. We set the CPU
                                * index to 0. */
+
+#ifdef versal
+#define IPI_CHN_BITMASK     0x08 /* IPI channel bit mask for IPI
+                                        * from/to RPU0 */
+#define IPI_DEV_NAME        "ff360000.ipi" /* IPI device name */
+#else
+#define IPI_CHN_BITMASK     0x00000100
+#define IPI_DEV_NAME        "ff340000.ipi"
+#endif /* versal */
+
 #define DEV_BUS_NAME        "platform" /* device bus name. "platform" bus
                                         * is used in Linux kernel for generic
 					* devices */
@@ -52,6 +63,15 @@
 struct remoteproc_priv rproc_priv = {
 	.shm_name = SHM_DEV_NAME,
 	.shm_bus_name = DEV_BUS_NAME,
+#ifndef RPMSG_NO_IPI
+	.ipi_name = IPI_DEV_NAME,
+	.ipi_bus_name = DEV_BUS_NAME,
+	.ipi_chn_mask = IPI_CHN_BITMASK,
+#endif /* !RPMSG_NO_IPI */
+#ifdef RPMSG_NO_IPI
+	.shm_poll_name = POLL_DEV_NAME,
+	.shm_poll_bus_name = DEV_BUS_NAME,
+#endif /* RPMSG_NO_IPI */
 };
 
 static struct remoteproc rproc_inst;
@@ -159,7 +179,7 @@ platform_create_rpmsg_vdev(void *platform, unsigned int vdev_index,
 		return NULL;
 	shbuf_io = remoteproc_get_io_with_pa(rproc, SHARED_BUF_PA);
 	if (!shbuf_io)
-		return NULL;
+		goto err1;
 	shbuf = metal_io_phys_to_virt(shbuf_io,
 				      SHARED_BUF_PA);
 
@@ -194,16 +214,48 @@ err1:
 int platform_poll(void *priv)
 {
 	struct remoteproc *rproc = priv;
+	struct remoteproc_priv *prproc;
+	unsigned int flags;
+	int ret;
 
-	usleep(300000);
-	remoteproc_get_notification(rproc, RSC_NOTIFY_ID_ANY);
-
+	prproc = rproc->priv;
+	while(1) {
+#ifdef RPMSG_NO_IPI
+		(void)flags;
+		if (metal_io_read32(prproc->shm_poll_io, 0)) {
+			ret = remoteproc_get_notification(rproc,
+							  RSC_NOTIFY_ID_ANY);
+			if (ret)
+				return ret;
+			break;
+		}
+#else
+		flags = metal_irq_save_disable();
+		if (!(atomic_flag_test_and_set(&prproc->ipi_nokick))) {
+			metal_irq_restore_enable(flags);
+			ret = remoteproc_get_notification(rproc,
+							  RSC_NOTIFY_ID_ANY);
+			if (ret)
+				return ret;
+			break;
+		}
+		_rproc_wait();
+		metal_irq_restore_enable(flags);
+#endif /* RPMSG_NO_IPI */
+	}
 	return 0;
 }
 
-void platform_release_rpmsg_vdev(struct rpmsg_device *rpdev)
+void platform_release_rpmsg_vdev(struct rpmsg_device *rpdev, void *platform)
 {
-	(void)rpdev;
+	struct rpmsg_virtio_device *rpvdev;
+	struct remoteproc *rproc;
+
+	rpvdev = metal_container_of(rpdev, struct rpmsg_virtio_device, rdev);
+	rproc = platform;
+
+	rpmsg_deinit_vdev(rpvdev);
+	remoteproc_remove_virtio(rproc, rpvdev->vdev);
 }
 
 void platform_cleanup(void *platform)
@@ -211,6 +263,7 @@ void platform_cleanup(void *platform)
 	struct remoteproc *rproc = platform;
 
 	if (rproc)
-//		remoteproc_remove(rproc);
+		remoteproc_remove(rproc);
 	cleanup_system();
 }
+
