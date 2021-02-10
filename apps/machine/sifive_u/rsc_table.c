@@ -11,10 +11,8 @@
 
 #include <openamp/open_amp.h>
 #include "rsc_table.h"
-#include "platform_info.h"
 
 /* Place resource table in special ELF section */
-/* Redefine __section for section name with token */
 #define __section_t(S)          __attribute__((__section__(#S)))
 #define __resource              __section_t(.resource_table)
 
@@ -26,7 +24,6 @@
 /* Remote supports Name Service announcement */
 #define VIRTIO_RPMSG_F_NS           0
 
-/* Resource table entries */
 #define NUM_VRINGS                  0x02
 #define VRING_ALIGN                 0x1000
 #define RING_TX                     0x90020000
@@ -35,8 +32,7 @@
 
 #define NUM_TABLE_ENTRIES           1
 
-
-struct remote_resource_table resources = {
+struct remote_resource_table __resource resources = {
 	/* Version */
 	1,
 
@@ -52,9 +48,9 @@ struct remote_resource_table resources = {
 
 	/* Virtio device entry */
 	{
-	 RSC_VDEV, VIRTIO_ID_RPMSG_, RSC_NOTIFY_ID_ANY, RPMSG_IPU_C0_FEATURES, 0, 0, 0,
+	 RSC_VDEV, VIRTIO_ID_RPMSG_, 0, RPMSG_IPU_C0_FEATURES, 0, 0, 0,
 	 NUM_VRINGS, {0, 0},
-	},
+	 },
 
 	/* Vring rsc entry - part of vdev rsc entry */
 	{RING_TX, VRING_ALIGN, VRING_SIZE, 1, 0},
@@ -67,3 +63,4 @@ void *get_resource_table (int rsc_id, int *len)
 	*len = sizeof(resources);
 	return &resources;
 }
+
