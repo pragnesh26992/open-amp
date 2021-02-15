@@ -281,7 +281,7 @@ static inline int rpmsg_trysend_offchannel(struct rpmsg_endpoint *ept,
  * @ns_unbind_cb: end point service unbind callback, called when remote ept is
  *                destroyed.
  */
-__deprecated static inline void rpmsg_init_ept(struct rpmsg_endpoint *ept,
+static inline void rpmsg_init_ept(struct rpmsg_endpoint *ept,
 					       const char *name,
 					       uint32_t src, uint32_t dest,
 					       rpmsg_ept_cb cb,
