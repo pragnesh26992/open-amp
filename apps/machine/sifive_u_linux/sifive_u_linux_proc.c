@@ -31,13 +31,7 @@
 #include <sys/un.h>
 #include "platform_info.h"
 
-/* IPI REGs OFFSET */
-#define IPI_TRIG_OFFSET 0x00000000 /* IPI trigger register offset */
-#define IPI_OBS_OFFSET  0x00000004 /* IPI observation register offset */
-#define IPI_ISR_OFFSET  0x00000010 /* IPI interrupt status register offset */
-#define IPI_IMR_OFFSET  0x00000014 /* IPI interrupt mask register offset */
-#define IPI_IER_OFFSET  0x00000018 /* IPI interrupt enable register offset */
-#define IPI_IDR_OFFSET  0x0000001C /* IPI interrupt disable register offset */
+#define ISR(x)        (0x2200 + ((x) << 2))
 
 #ifndef RPMSG_NO_IPI
 static int sifive_u_linux_bx2_proc_irq_handler(int vect_id, void *data)
@@ -51,14 +45,11 @@ static int sifive_u_linux_bx2_proc_irq_handler(int vect_id, void *data)
                 return METAL_IRQ_NOT_HANDLED;
         prproc = rproc->priv;
         ipi_intr_status = (unsigned int)metal_io_read32(prproc->ipi_io,
-                                                        IPI_ISR_OFFSET);
-        if (ipi_intr_status & prproc->ipi_chn_mask) {
-                atomic_flag_clear(&prproc->ipi_nokick);
-                metal_io_write32(prproc->ipi_io, IPI_ISR_OFFSET,
-                                 prproc->ipi_chn_mask);
-                return METAL_IRQ_HANDLED;
-        }
-        return METAL_IRQ_NOT_HANDLED;
+                                                        ISR(0));
+
+	metal_io_write32(prproc->ipi_io, BX2_DMSS_GPOUT_ADDR, 0x0);
+	atomic_flag_clear(&prproc->ipi_nokick);
+	return METAL_IRQ_HANDLED;
 }
 #endif /* !RPMSG_NO_IPI */
 
@@ -137,8 +128,7 @@ sifive_u_linux_proc_init(struct remoteproc *rproc,
 	irq_vect = (uintptr_t)dev->irq_info;
 	metal_irq_register(irq_vect, sifive_u_linux_bx2_proc_irq_handler, rproc);
 	metal_irq_enable(irq_vect);
-	metal_io_write32(prproc->ipi_io, IPI_IER_OFFSET,
-			prproc->ipi_chn_mask);
+
 	printf("Successfully initialized Linux r5 remoteproc.\r\n");
 	return rproc;
 #endif /* !RPMSG_NO_IPI */
@@ -165,7 +155,6 @@ static void sifive_u_linux_proc_remove(struct remoteproc *rproc)
 		return;
 	prproc = rproc->priv;
 #ifndef RPMSG_NO_IPI
-	metal_io_write32(prproc->ipi_io, IPI_IDR_OFFSET, prproc->ipi_chn_mask);
 	dev = prproc->ipi_dev;
 	if (dev) {
 		metal_irq_disable((uintptr_t)dev->irq_info);
@@ -214,6 +203,9 @@ sifive_u_linux_proc_mmap(struct remoteproc *rproc, metal_phys_addr_t *pa,
 static int sifive_u_linux_proc_notify(struct remoteproc *rproc, uint32_t id)
 {
 	struct remoteproc_priv *prproc;
+#ifndef RPMSG_NO_IPI
+	unsigned int com_reg_val = 0x1; /* COM_REG value to write */
+#endif
 
 	(void)id;
 	if (!rproc)
@@ -223,8 +215,8 @@ static int sifive_u_linux_proc_notify(struct remoteproc *rproc, uint32_t id)
 #ifdef RPMSG_NO_IPI
 	metal_io_write32(prproc->shm_poll_io, 0, POLL_STOP);
 #else /* RPMSG_NO_IPI */
-	metal_io_write32(prproc->ipi_io, IPI_TRIG_OFFSET,
-			prproc->ipi_chn_mask);
+	metal_io_write32(prproc->ipi_io, BX2_MSS_MCCI_COM_REG0_ADDR,
+			com_reg_val);
 #endif /* !RPMSG_NO_IPI */
 	return 0;
 }
@@ -240,4 +232,3 @@ struct remoteproc_ops sifive_u_linux_proc_ops = {
     .stop = NULL,
     .shutdown = NULL,
 };
-

@@ -4,8 +4,8 @@
                #size-cells = <2>;
                ranges;
 
-               hart0_mem: hart0@0x90000000 {
-                       reg = <0x0 0x90000000 0x0 0x2000000>;
+               bx2_mem: bx2@0x8384E0000 {
+                       reg = <0x8 0x384E0000 0x0 0x2000000>;
                        no-map;
                };
        };
@@ -14,22 +14,21 @@
 
                vring: vring@0 {
                        compatible = "vring_uio";
-                       reg = <0x0 0x90020000 0x0 0x40000>;
+                       reg = <0x8 0x38500000 0x0 0x40000>;
                };
                shm0: shm@0 {
                        compatible = "shm_uio";
-                       reg = <0x0 0x90000000 0x0 0x0100000>;
+                       reg = <0x8 0x384E0000 0x0 0x0100000>;
                };
                shm1: shm@1 {
                        compatible = "shm_uio";
-                       reg = <0x0 0x91000000 0x0 0x0100000>;
+                       reg = <0x8 0x38600000 0x0 0x0100000>;
                };
-
 		ipi0: ipi@0 {
 			compatible = "ipi_uio";
-			reg = <0x0 0xff340000 0x0 0x1000>;
-			interrupt-parent = <&gic>;
-			interrupts = <0 29 4>;
+			reg = <0x3 0x00C00000 0x0 0x2800>;
+			interrupt-parent = <&plic0>;
+			interrupts = <9>;
 		};
 	};
 };

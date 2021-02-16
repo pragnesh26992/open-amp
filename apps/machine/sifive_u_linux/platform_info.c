@@ -32,32 +32,25 @@
 #include <sys/un.h>
 #include "platform_info.h"
 
-#define RPU_CPU_ID          0 /* RPU remote CPU Index. We only talk to
-                               * one CPU in the exmaple. We set the CPU
-                               * index to 0. */
-
-#ifdef versal
-#define IPI_CHN_BITMASK     0x08 /* IPI channel bit mask for IPI
-                                        * from/to RPU0 */
-#define IPI_DEV_NAME        "ff360000.ipi" /* IPI device name */
-#else
-#define IPI_CHN_BITMASK     0x00000100
-#define IPI_DEV_NAME        "ff340000.ipi"
-#endif /* versal */
+/* IPI channel bit mask for IPI from/to RPU0
+ * 0x3_0080_0000 + 0x40_0000
+ */
+#define IPI_DEV_NAME        "300c00000.ipi" /* IPI device name */
 
 #define DEV_BUS_NAME        "platform" /* device bus name. "platform" bus
                                         * is used in Linux kernel for generic
 					* devices */
+
 /* libmetal devices names used in the examples.
  * They are platform devices, you find them in Linux sysfs
  * sys/bus/platform/devices */
-#define SHM_DEV_NAME        "90000000.shm" /* shared device name */
+#define SHM_DEV_NAME        "8384e0000.shm" /* shared device name */
 
-#define RSC_MEM_PA          0x90000000UL
+#define RSC_MEM_PA          0x8384E0000UL
 #define RSC_MEM_SIZE        0x2000UL
-#define VRING_MEM_PA        0x90020000UL
+#define VRING_MEM_PA        0x838500000UL
 #define VRING_MEM_SIZE      0x8000UL
-#define SHARED_BUF_PA       0x90028000UL
+#define SHARED_BUF_PA       0x838508000UL
 #define SHARED_BUF_SIZE     0x40000UL
 
 struct remoteproc_priv rproc_priv = {
@@ -66,7 +59,6 @@ struct remoteproc_priv rproc_priv = {
 #ifndef RPMSG_NO_IPI
 	.ipi_name = IPI_DEV_NAME,
 	.ipi_bus_name = DEV_BUS_NAME,
-	.ipi_chn_mask = IPI_CHN_BITMASK,
 #endif /* !RPMSG_NO_IPI */
 #ifdef RPMSG_NO_IPI
 	.shm_poll_name = POLL_DEV_NAME,
