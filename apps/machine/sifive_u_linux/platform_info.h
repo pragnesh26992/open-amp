@@ -13,6 +13,7 @@
 #include <openamp/remoteproc.h>
 #include <openamp/virtio.h>
 #include <openamp/rpmsg.h>
+#include <bx2/bx2_reg_defs.h>
 
 #if defined __cplusplus
 extern "C" {
@@ -31,7 +32,6 @@ struct remoteproc_priv {
 	struct metal_io_region *shm_io; /**< pointer to shared memory i/o
 						 region */
 	struct remoteproc_mem shm_mem; /**< shared memory */
-	unsigned int ipi_chn_mask; /**< IPI channel mask */
 	atomic_int ipi_nokick;
 #ifdef RPMSG_NO_IPI
 	const char *shm_poll_name; /**< shared memory device name */
@@ -42,7 +42,7 @@ struct remoteproc_priv {
 };
 
 #ifdef RPMSG_NO_IPI
-#define POLL_DEV_NAME        "91000000.shm" /* shared device name */
+#define POLL_DEV_NAME        "838600000.shm" /* shared device name */
 #define POLL_STOP 0x1U
 #endif /* RPMSG_NO_IPI */
 
