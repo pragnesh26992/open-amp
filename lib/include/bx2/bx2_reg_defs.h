@@ -1,0 +1,1342 @@
+
+//********************************************************  
+// CPM DEFINES
+//********************************************************
+
+#define  BX2_PMSS_CPM_OFFSET       0x400
+
+#define  BX2_PMSS_PORT_RID_ADDR    0x700
+#define  BX2_PMSS_PORT_WID_ADDR    0x704
+
+// PMC MMIO registers
+#define  BX2_PMSS_PCR              0x000 + BX2_PMSS_CPM_OFFSET 
+
+// Program Control Register
+#define  BX2_PMSS_SYS_OU_C         0x004 + BX2_PMSS_CPM_OFFSET
+//#define  PMSS_ECADD            0x008 + PMSS_CPM_OFFSET
+//#define  PMSS_MAPAR            0x010 + PMSS_CPM_OFFSET
+//#define  PMSS_MAPSR            0x014 + PMSS_CPM_OFFSET
+#define  BX2_PMSS_PMEM_S           0x018 + BX2_PMSS_CPM_OFFSET
+
+// PDMA MMIO registers
+//#define  PMSS_PDEA             0x100 + PMSS_CPM_OFFSET
+//#define  PMSS_PDIA             0x104 + PMSS_CPM_OFFSET
+//#define  PMSS_PDTC             0x108 + PMSS_CPM_OFFSET
+//#define  PMSS_MECCCOR          0x130 + PMSS_CPM_OFFSET
+
+// IACU Registers
+
+#define  BX2_P_ADDX_START_ADDR_OFFSET     0x20 + BX2_PMSS_CPM_OFFSET
+
+#define  BX2_P_ADD0_START_ADDR     0x00 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD1_START_ADDR     0x08 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD2_START_ADDR     0x10 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD3_START_ADDR     0x18 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD4_START_ADDR     0x20 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD5_START_ADDR     0x28 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD6_START_ADDR     0x30 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD7_START_ADDR     0x38 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD8_START_ADDR     0x40 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADD9_START_ADDR     0x48 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADDA_START_ADDR     0x50 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADDB_START_ADDR     0x58 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADDC_START_ADDR     0x60 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADDD_START_ADDR     0x68 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADDE_START_ADDR     0x70 + BX2_P_ADDX_START_ADDR_OFFSET 
+#define  BX2_P_ADDF_START_ADDR     0x78 + BX2_P_ADDX_START_ADDR_OFFSET 
+
+#define  BX2_P_ADDX_ATT0_ADDR_OFFSET       0x24 + BX2_PMSS_CPM_OFFSET
+
+#define  BX2_P_ADD0_ATT0_ADDR      0x00 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD1_ATT0_ADDR      0x08 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD2_ATT0_ADDR      0x10 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD3_ATT0_ADDR      0x18 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD4_ATT0_ADDR      0x20 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD5_ATT0_ADDR      0x28 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD6_ATT0_ADDR      0x30 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD7_ATT0_ADDR      0x38 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD8_ATT0_ADDR      0x40 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADD9_ATT0_ADDR      0x48 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADDA_ATT0_ADDR      0x50 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADDB_ATT0_ADDR      0x58 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADDC_ATT0_ADDR      0x60 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADDD_ATT0_ADDR      0x68 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADDE_ATT0_ADDR      0x70 + BX2_P_ADDX_ATT0_ADDR_OFFSET 
+#define  BX2_P_ADDF_ATT0_ADDR      0x78 + BX2_P_ADDX_ATT0_ADDR_OFFSET  
+
+#define  BX2_P_ADD0_ATT0_ADDR_OFFSET      0x00 + 0x18 
+#define  BX2_P_ADD1_ATT0_ADDR_OFFSET      0x10 + 0x18 
+#define  BX2_P_ADD2_ATT0_ADDR_OFFSET      0x20 + 0x18 
+#define  BX2_P_ADD3_ATT0_ADDR_OFFSET      0x30 + 0x18 
+#define  BX2_P_ADD4_ATT0_ADDR_OFFSET      0x40 + 0x18 
+#define  BX2_P_ADD5_ATT0_ADDR_OFFSET      0x50 + 0x18 
+#define  BX2_P_ADD6_ATT0_ADDR_OFFSET      0x60 + 0x18 
+#define  BX2_P_ADD7_ATT0_ADDR_OFFSET      0x70 + 0x18 
+#define  BX2_P_ADD8_ATT0_ADDR_OFFSET      0x80 + 0x18 
+#define  BX2_P_ADD9_ATT0_ADDR_OFFSET      0x90 + 0x18 
+#define  BX2_P_ADDA_ATT0_ADDR_OFFSET      0xa0 + 0x18 
+#define  BX2_P_ADDB_ATT0_ADDR_OFFSET      0xb0 + 0x18 
+#define  BX2_P_ADDC_ATT0_ADDR_OFFSET      0xc0 + 0x18 
+#define  BX2_P_ADDD_ATT0_ADDR_OFFSET      0xd0 + 0x18 
+#define  BX2_P_ADDE_ATT0_ADDR_OFFSET      0xe0 + 0x18 
+#define  BX2_P_ADDF_ATT0_ADDR_OFFSET      0x00 + 0x8 + 0x18 
+
+// PSWOU configuration Registers
+#define  BX2_PMSS_PSWOU_BASE      0x500
+#define  BX2_PMSS_CCOSAR_ADDR     BX2_PMSS_PSWOU_BASE + 0x20
+#define  BX2_PMSS_CCOCR_ADDR      BX2_PMSS_PSWOU_BASE + 0x24
+#define  BX2_PMSS_CCOSAR_S_ADDR   BX2_PMSS_PSWOU_BASE + 0x28
+#define  BX2_PMSS_CCOCR_S_ADDR    BX2_PMSS_PSWOU_BASE + 0x2C
+
+
+
+
+#define  BX2_EDAP_OFFSET  0x400000
+#define  BX2_EDAP_P_ADD0_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD0_START_ADDR
+#define  BX2_EDAP_P_ADD1_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD1_START_ADDR
+#define  BX2_EDAP_P_ADD2_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD2_START_ADDR
+#define  BX2_EDAP_P_ADD3_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD3_START_ADDR
+#define  BX2_EDAP_P_ADD4_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD4_START_ADDR
+#define  BX2_EDAP_P_ADD5_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD5_START_ADDR
+#define  BX2_EDAP_P_ADD6_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD6_START_ADDR
+#define  BX2_EDAP_P_ADD7_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD7_START_ADDR
+#define  BX2_EDAP_P_ADD8_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD8_START_ADDR
+#define  BX2_EDAP_P_ADD9_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADD9_START_ADDR
+#define  BX2_EDAP_P_ADDA_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADDA_START_ADDR
+#define  BX2_EDAP_P_ADDB_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADDB_START_ADDR
+#define  BX2_EDAP_P_ADDC_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADDC_START_ADDR
+#define  BX2_EDAP_P_ADDD_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADDD_START_ADDR
+#define  BX2_EDAP_P_ADDE_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADDE_START_ADDR
+#define  BX2_EDAP_P_ADDF_START_ADDR     BX2_EDAP_OFFSET + BX2_P_ADDF_START_ADDR
+
+#define  BX2_EDAP_P_ADD0_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD0_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD1_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD1_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD2_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD2_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD3_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD3_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD4_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD4_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD5_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD5_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD6_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD6_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD7_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD7_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD8_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD8_ATT0_ADDR 
+#define  BX2_EDAP_P_ADD9_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADD9_ATT0_ADDR 
+#define  BX2_EDAP_P_ADDA_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADDA_ATT0_ADDR 
+#define  BX2_EDAP_P_ADDB_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADDB_ATT0_ADDR 
+#define  BX2_EDAP_P_ADDC_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADDC_ATT0_ADDR 
+#define  BX2_EDAP_P_ADDD_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADDD_ATT0_ADDR 
+#define  BX2_EDAP_P_ADDE_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADDE_ATT0_ADDR 
+#define  BX2_EDAP_P_ADDF_ATT0_ADDR  BX2_EDAP_OFFSET + BX2_P_ADDF_ATT0_ADDR 
+
+
+//********************************************************  
+// DMSS PARAM
+//********************************************************
+
+// Data memory configuration registers
+#define  BX2_DMSS_BASE                   0x0600
+#define  BX2_DMSS_BASE_DEC               1536
+#define  BX2_DMSS_HDCFG_ADDR             BX2_DMSS_BASE + 0x00
+#define  BX2_DMSS_MEMCFG_ADDR            BX2_DMSS_BASE + 0x04
+#define  BX2_DMSS_SDCFG_ADDR             BX2_DMSS_BASE + 0x08
+#define  BX2_DMSS_DMBE_ADDR              BX2_DMSS_BASE + 0x0C
+#define  BX2_DMSS_DDEA_ADDR              BX2_DMSS_BASE + 0x10
+#define  BX2_DMSS_DDIA_ADDR              BX2_DMSS_BASE + 0x14
+#define  BX2_DMSS_DDTC_ADDR              BX2_DMSS_BASE + 0x18
+#define  BX2_DMSS_DDEA_NS_ADDR           BX2_DMSS_BASE + 0x20
+#define  BX2_DMSS_DDIA_NS_ADDR           BX2_DMSS_BASE + 0x24
+#define  BX2_DMSS_DDTC_NS_ADDR           BX2_DMSS_BASE + 0x28
+#define  BX2_DMSS_DDQS_ADDR              BX2_DMSS_BASE + 0x30
+#define  BX2_DMSS_DDRS_ADDR              BX2_DMSS_BASE + 0x34
+#define  BX2_DMSS_BARRIER_ADDR           BX2_DMSS_BASE + 0x38
+#define  BX2_DMSS_CCOSAR_ADDR            BX2_DMSS_BASE + 0x40
+#define  BX2_DMSS_CCOSLR_ADDR            BX2_DMSS_BASE + 0x44
+#define  BX2_DMSS_CCOCR_ADDR             BX2_DMSS_BASE + 0x48
+#define  BX2_DMSS_CCOSAR_NS_ADDR         BX2_DMSS_BASE + 0x50
+#define  BX2_DMSS_CCOSLR_NS_ADDR         BX2_DMSS_BASE + 0x54
+#define  BX2_DMSS_CCOCR_NS_ADDR          BX2_DMSS_BASE + 0x58
+#define  BX2_DMSS_GPOUT_ADDR             BX2_DMSS_BASE + 0x60
+#define  BX2_DMSS_GPIN_ADDR              BX2_DMSS_BASE + 0x64
+#define  BX2_DMSS_DACC_ADDR              BX2_DMSS_BASE + 0x68
+#define  BX2_DMSS_DMAB_ADDR              BX2_DMSS_BASE + 0x70
+#define  BX2_DMSS_DDESC_ID_ADDR          BX2_DMSS_BASE + 0x74
+
+//#define  DMSS_DMBA_ADDR_DEC          DMSS_BASE_DEC + 20
+//#define  DMSS_DDEA_ADDR_DEC          DMSS_BASE_DEC + 28
+//#define  DMSS_DDIA_ADDR_DEC          DMSS_BASE_DEC + 32
+//#define  DMSS_DDTC_ADDR_DEC          DMSS_BASE_DEC + 36
+//#define  DMSS_2DCFG1_ADDR            DMSS_BASE + 0x44
+//#define  DMSS_2DCFG2_ADDR            DMSS_BASE + 0x48
+
+// DMSS Access protection Registers
+#define  BX2_DMSS_AP_BASE        0x0C00
+#define  BX2_DMSS_MAPAR_ADDR     BX2_DMSS_AP_BASE + 0x80
+#define  BX2_DMSS_MAPSR_ADDR     BX2_DMSS_AP_BASE + 0x84
+#define  BX2_DMSS_DTAP_ADDR      BX2_DMSS_AP_BASE + 0x88
+
+
+//#define  PMSS_MECCCOR    PMSS_PSWOU_BASE + 0x30
+#define  BX2_PMSS_PSWOU_BASE_DEC  1280      
+#define  BX2_PMSS_CCOCR_ADDR_DEC  BX2_PMSS_PSWOU_BASE_DEC + 24
+
+// Shadow registers
+#define  BX2_PMSS_ACS         BX2_PMSS_PSWOU_BASE + 0x40
+#define  BX2_PMSS_SHW_MAPSR       BX2_PMSS_PSWOU_BASE + 0x44
+#define  BX2_PMSS_SHW_ECADD      BX2_PMSS_PSWOU_BASE + 0x48
+#define  BX2_PMSS_SHW_MECCCOR      BX2_PMSS_PSWOU_BASE + 0x4C
+
+
+
+
+// ECC Configuration Registers
+#define  BX2_DMSS_ECC_BASE               0x0600
+#define  BX2_DMSS_ECCCFG                 BX2_DMSS_ECC_BASE + 0x50
+#define  BX2_DMSS_ECCCOR                 BX2_DMSS_ECC_BASE + 0x54
+#define  BX2_DMSS_ECCERR                 BX2_DMSS_ECC_BASE + 0x58
+#define  BX2_DMSS_MECCCOR                BX2_DMSS_ECC_BASE + 0x5C
+#define  BX2_DMSS_MECCERR                BX2_DMSS_ECC_BASE + 0x60
+#define  BX2_DMSS_SECCCOR                BX2_DMSS_ECC_BASE + 0x64
+#define  BX2_DMSS_SECCERR                BX2_DMSS_ECC_BASE + 0x68
+
+// Undefined Opcode Configuration Registers
+#define  BX2_DMSS_UOP_BASE               0x0C00
+#define  BX2_UOP_STS                     BX2_DMSS_UOP_BASE + 0x58
+#define  BX2_UOP_PAR                     BX2_DMSS_UOP_BASE + 0x5C
+#define  BX2_MSS_XCI_COR_ADDR            BX2_DMSS_UOP_BASE + 0x60
+
+// LRUA Configuration Registers
+#define  BX2_DMSS_LRU_BASE               0x0F00
+#define  BX2_DMSS_LRU_SLT_LO_ADDR        BX2_DMSS_LRU_BASE + 0xA0
+#define  BX2_DMSS_LRU_SLT_HI_ADDR        BX2_DMSS_LRU_BASE + 0xA4
+#define  BX2_DMSS_LRU_SLT_PRI_ADDR       BX2_DMSS_LRU_BASE + 0xA8
+#define  BX2_DMSS_LRU_WEIGHT_LO_ADDR     BX2_DMSS_LRU_BASE + 0xAC
+#define  BX2_DMSS_LRU_WEIGHT_HI_ADDR     BX2_DMSS_LRU_BASE + 0xB0
+
+// DDMA Debug Registers
+#define  BX2_DMSS_DBG_BASE_DEC           3328
+#define  BX2_DMSS_DBG_DDAM_ADDR_DEC      BX2_DMSS_DBG_BASE_DEC + 0
+#define  BX2_DMSS_DBG_DDS_ADDR_DEC       BX2_DMSS_DBG_BASE_DEC + 4
+#define  BX2_DMSS_DBG_DDC_ADDR_DEC       BX2_DMSS_DBG_BASE_DEC + 8
+
+#define  BX2_DMSS_DBG_BASE               0x0D00
+#define  BX2_DMSS_DBG_DDAM_ADDR          BX2_DMSS_DBG_BASE + 0x00
+#define  BX2_DMSS_DBG_DDS_ADDR           BX2_DMSS_DBG_BASE + 0x04
+#define  BX2_DMSS_DBG_DDC_ADDR           BX2_DMSS_DBG_BASE + 0x08
+#define  BX2_DMSS_POSCINT_ADDR           BX2_DMSS_DBG_BASE + 0x0c
+#define  BX2_NESIRQ_REG_ADDR             BX2_DMSS_DBG_BASE + 0x10
+#define  BX2_NENSIRQ_REG_ADDR            BX2_DMSS_DBG_BASE + 0x14
+#define  BX2_CESIRQ_REG_ADDR             BX2_DMSS_DBG_BASE + 0x18
+#define  BX2_CENSIRQ_REG_ADDR            BX2_DMSS_DBG_BASE + 0x1C
+#define  BX2_DMSS_DBG_GEN_ADDR           BX2_DMSS_DBG_BASE + 0x20
+#define  BX2_DMSS_DBG_GEN_S_ADDR         BX2_DMSS_DBG_BASE + 0x28
+#define  BX2_DMSS_DBG_GEN_MSK_ADDR       BX2_DMSS_DBG_BASE + 0x30
+#define  BX2_DMSS_DBG_GEN_MASK_S_ADDR    BX2_DMSS_DBG_BASE + 0x38
+#define  BX2_NESIRQ_REG_MSK_ADDR         BX2_DMSS_DBG_BASE + 0x40
+#define  BX2_NENSIRQ_REG_MSK_ADDR        BX2_DMSS_DBG_BASE + 0x44
+#define  BX2_CESIRQ_REG_MSK_ADDR         BX2_DMSS_DBG_BASE + 0x48
+#define  BX2_CENSIRQ_REG_MSK_ADDR        BX2_DMSS_DBG_BASE + 0x4C
+#define  BX2_DMSS_DBG_DESC_ID_ADDR       BX2_DMSS_DBG_BASE + 0x50
+#define  BX2_DMSS_DBG_QMAN_ID_ADDR       BX2_DMSS_DBG_BASE + 0x54
+#define  BX2_DMSS_DBG_WRC0_ADDR          BX2_DMSS_DBG_BASE + 0x60
+#define  BX2_DMSS_DBG_WRC1_ADDR          BX2_DMSS_DBG_BASE + 0x64
+#define  BX2_DMSS_DBG_WRC2_ADDR          BX2_DMSS_DBG_BASE + 0x68
+#define  BX2_DMSS_DBG_STACK_START_ADDR   BX2_DMSS_DBG_BASE + 0x70
+#define  BX2_DMSS_DBG_DUNMPD_ADDR        BX2_DMSS_DBG_BASE + 0x78
+#define  BX2_DMSS_DBG_DUNMPD_MSK_ADDR    BX2_DMSS_DBG_BASE + 0x7c
+#define  BX2_DMSS_DBG_STACK_END_ADDR     BX2_DMSS_DBG_BASE + 0x74
+
+
+
+
+
+// Shadow
+//#define  DMSS_DBG_ACS_ADDR               DMSS_DBG_BASE + 0x60
+#define  BX2_DMSS_DBG_WRC0_ADDR          BX2_DMSS_DBG_BASE + 0x60
+#define  BX2_DMSS_DBG_WRC1_ADDR          BX2_DMSS_DBG_BASE + 0x64
+#define  BX2_DMSS_DBG_WRC2_ADDR          BX2_DMSS_DBG_BASE + 0x68
+//#define  DMSS_DBG_SHW_GEN_ADDR           DMSS_DBG_BASE + 0x64
+//define  DMSS_DBG_SHW_GEN_2_ADDR         DMSS_DBG_BASE + 0x68
+#define  BX2_DMSS_DBG_SHW_ECCERR             BX2_DMSS_DBG_BASE + 0x6C
+//#define  DMSS_DBG_SHW_ECCCOR             DMSS_DBG_BASE + 0x70
+#define  BX2_DMSS_DBG_SHW_MECCERR            BX2_DMSS_DBG_BASE + 0x74
+
+// EXCEPTION Debug Registers
+#define  BX2_DMSS_DBG_STACK_DOWN_OVERFLOW_ADDR   BX2_DMSS_DBG_BASE + 0x40
+#define  BX2_DMSS_DBG_STACK_UP_OVERFLOW_ADDR     BX2_DMSS_DBG_BASE + 0x52
+
+// Watchdog Registers
+#define  BX2_DMSS_WDOGACS      0x0670
+#define  BX2_DMSS_WDOGCFG      0x0674
+#define  BX2_DMSS_WDOGMIN      0x0678
+#define  BX2_DMSS_WDOGMAX      0x067c
+#define  BX2_DMSS_MSSTIML      0x0680
+#define  BX2_DMSS_MSSTIMH      0x0684
+#define  BX2_DMSS_WDOGCNT      0x0688
+#define  BX2_DMSS_MPWDOGT      0x0690
+#define  BX2_DMSS_EPPWDOGC     0x0694
+#define  BX2_DMSS_EDPWDOGC     0x0698
+#define  BX2_DMSS_IOPWDOGC     0x069c
+#define  BX2_DMSS_AM0WDOGC     0x06a0
+#define  BX2_DMSS_AM1WDOGC     0x06a4
+  
+
+// Interface Configuration Registers
+//#define  DMSS_FICS_COR_ADDR     0x0704
+//#define  DMSS_FICMR_COR_ADDR    0x0708
+
+#define  BX2_DMSS_ADD0_START_ADDR   0x0720
+#define  BX2_DMSS_ADD0_ATT0_ADDR    0x0724
+#define  BX2_DMSS_ADD0_ATT1_ADDR    0x0728
+#define  BX2_DMSS_ADD1_START_ADDR   0x0730
+#define  BX2_DMSS_ADD1_ATT0_ADDR    0x0734
+#define  BX2_DMSS_ADD1_ATT1_ADDR    0x0738
+#define  BX2_DMSS_ADD2_START_ADDR   0x0740
+#define  BX2_DMSS_ADD2_ATT0_ADDR    0x0744
+#define  BX2_DMSS_ADD2_ATT1_ADDR    0x0748
+#define  BX2_DMSS_ADD3_START_ADDR   0x0750
+#define  BX2_DMSS_ADD3_ATT0_ADDR    0x0754
+#define  BX2_DMSS_ADD3_ATT1_ADDR    0x0758
+#define  BX2_DMSS_ADD4_START_ADDR   0x0760
+#define  BX2_DMSS_ADD4_ATT0_ADDR    0x0764
+#define  BX2_DMSS_ADD4_ATT1_ADDR    0x0768
+#define  BX2_DMSS_ADD5_START_ADDR   0x0770
+#define  BX2_DMSS_ADD5_ATT0_ADDR    0x0774
+#define  BX2_DMSS_ADD5_ATT1_ADDR    0x0778
+#define  BX2_DMSS_ADD6_START_ADDR   0x0780
+#define  BX2_DMSS_ADD6_ATT0_ADDR    0x0784
+#define  BX2_DMSS_ADD6_ATT1_ADDR    0x0788
+#define  BX2_DMSS_ADD7_START_ADDR   0x0790
+#define  BX2_DMSS_ADD7_ATT0_ADDR    0x0794
+#define  BX2_DMSS_ADD7_ATT1_ADDR    0x0798
+#define  BX2_DMSS_ADD8_START_ADDR   0x07a0
+#define  BX2_DMSS_ADD8_ATT0_ADDR    0x07a4
+#define  BX2_DMSS_ADD8_ATT1_ADDR    0x07a8
+#define  BX2_DMSS_ADD9_START_ADDR   0x07b0
+#define  BX2_DMSS_ADD9_ATT0_ADDR    0x07b4
+#define  BX2_DMSS_ADD9_ATT1_ADDR    0x07b8
+#define  BX2_DMSS_ADD10_START_ADDR  0x07c0
+#define  BX2_DMSS_ADD10_ATT0_ADDR   0x07c4
+#define  BX2_DMSS_ADD10_ATT1_ADDR   0x07c8
+#define  BX2_DMSS_ADD11_START_ADDR  0x07d0
+#define  BX2_DMSS_ADD11_ATT0_ADDR   0x07d4
+#define  BX2_DMSS_ADD11_ATT1_ADDR   0x07d8
+#define  BX2_DMSS_ADD12_START_ADDR  0x07e0
+#define  BX2_DMSS_ADD12_ATT0_ADDR   0x07e4
+#define  BX2_DMSS_ADD12_ATT1_ADDR   0x07e8
+#define  BX2_DMSS_ADD13_START_ADDR  0x07f0
+#define  BX2_DMSS_ADD13_ATT0_ADDR   0x07f4
+#define  BX2_DMSS_ADD13_ATT1_ADDR   0x07f8
+#define  BX2_DMSS_ADD14_START_ADDR  0x0800
+#define  BX2_DMSS_ADD14_ATT0_ADDR   0x0804
+#define  BX2_DMSS_ADD14_ATT1_ADDR   0x0808
+#define  BX2_DMSS_ADD15_START_ADDR  0x0810
+#define  BX2_DMSS_ADD15_ATT0_ADDR   0x0814
+#define  BX2_DMSS_ADD15_ATT1_ADDR   0x0818
+#define  BX2_DMSS_ADD16_START_ADDR  0x0820
+#define  BX2_DMSS_ADD16_ATT0_ADDR   0x0824
+#define  BX2_DMSS_ADD16_ATT1_ADDR   0x0828
+#define  BX2_DMSS_ADD17_START_ADDR  0x0830
+#define  BX2_DMSS_ADD17_ATT0_ADDR   0x0834
+#define  BX2_DMSS_ADD17_ATT1_ADDR   0x0838
+#define  BX2_DMSS_ADD18_START_ADDR  0x0840
+#define  BX2_DMSS_ADD18_ATT0_ADDR   0x0844
+#define  BX2_DMSS_ADD18_ATT1_ADDR   0x0848
+#define  BX2_DMSS_ADD19_START_ADDR  0x0850
+#define  BX2_DMSS_ADD19_ATT0_ADDR   0x0854
+#define  BX2_DMSS_ADD19_ATT1_ADDR   0x0858
+#define  BX2_DMSS_ADD20_START_ADDR  0x0860
+#define  BX2_DMSS_ADD20_ATT0_ADDR   0x0864
+#define  BX2_DMSS_ADD20_ATT1_ADDR   0x0868
+#define  BX2_DMSS_ADD21_START_ADDR  0x0870
+#define  BX2_DMSS_ADD21_ATT0_ADDR   0x0874
+#define  BX2_DMSS_ADD21_ATT1_ADDR   0x0878
+#define  BX2_DMSS_ADD22_START_ADDR  0x0880
+#define  BX2_DMSS_ADD22_ATT0_ADDR   0x0884
+#define  BX2_DMSS_ADD22_ATT1_ADDR   0x0888
+#define  BX2_DMSS_ADD23_START_ADDR  0x0890
+#define  BX2_DMSS_ADD23_ATT0_ADDR   0x0894
+#define  BX2_DMSS_ADD23_ATT1_ADDR   0x0898
+#define  BX2_DMSS_ADD24_START_ADDR  0x08a0
+#define  BX2_DMSS_ADD24_ATT0_ADDR   0x08a4
+#define  BX2_DMSS_ADD24_ATT1_ADDR   0x08a8
+#define  BX2_DMSS_ADD25_START_ADDR  0x08b0
+#define  BX2_DMSS_ADD25_ATT0_ADDR   0x08b4
+#define  BX2_DMSS_ADD25_ATT1_ADDR   0x08b8
+#define  BX2_DMSS_ADD26_START_ADDR  0x08c0
+#define  BX2_DMSS_ADD26_ATT0_ADDR   0x08c4
+#define  BX2_DMSS_ADD26_ATT1_ADDR   0x08c8
+#define  BX2_DMSS_ADD27_START_ADDR  0x08d0
+#define  BX2_DMSS_ADD27_ATT0_ADDR   0x08d4
+#define  BX2_DMSS_ADD27_ATT1_ADDR   0x08d8
+#define  BX2_DMSS_ADD28_START_ADDR  0x08e0
+#define  BX2_DMSS_ADD28_ATT0_ADDR   0x08e4
+#define  BX2_DMSS_ADD28_ATT1_ADDR   0x08e8
+#define  BX2_DMSS_ADD29_START_ADDR  0x08f0
+#define  BX2_DMSS_ADD29_ATT0_ADDR   0x08f4
+#define  BX2_DMSS_ADD29_ATT1_ADDR   0x08f8
+#define  BX2_DMSS_ADD30_START_ADDR  0x0900
+#define  BX2_DMSS_ADD30_ATT0_ADDR   0x0904
+#define  BX2_DMSS_ADD30_ATT1_ADDR   0x0908
+#define  BX2_DMSS_ADD31_START_ADDR  0x0910
+#define  BX2_DMSS_ADD31_ATT0_ADDR   0x0914
+#define  BX2_DMSS_ADD31_ATT1_ADDR   0x0918
+
+
+#define  BX2_DMSS_PORT_RID_ADDR    0x700
+#define  BX2_DMSS_PORT_WID_ADDR    0x704
+#define  BX2_XCI_COR               0x708
+#define  BX2_DMSS_DMBA_ADDR        0x710
+#define  BX2_DMSS_PMBA_NS_ADDR     0x714
+
+//********************************************************  
+// TIMER CONFIGURATION REGISTERS
+//********************************************************
+
+#define  BX2_TIMER_BASE                0x2000
+#define  BX2_TIMER0_CFG                BX2_TIMER_BASE + 0x00
+#define  BX2_TIMER0_EW                 BX2_TIMER_BASE + 0x04
+#define  BX2_TIMER0_CC                 BX2_TIMER_BASE + 0x08
+#define  BX2_TIMER0_SC                 BX2_TIMER_BASE + 0x0c
+#define  BX2_TIMER1_CFG                BX2_TIMER_BASE + 0x10
+#define  BX2_TIMER1_EW                 BX2_TIMER_BASE + 0x14
+#define  BX2_TIMER1_CC                 BX2_TIMER_BASE + 0x18
+#define  BX2_TIMER1_SC                 BX2_TIMER_BASE + 0x1c
+#define  BX2_TIMER2_CFG                BX2_TIMER_BASE + 0x20
+#define  BX2_TIMER2_EW                 BX2_TIMER_BASE + 0x24
+#define  BX2_TIMER2_CC                 BX2_TIMER_BASE + 0x28
+#define  BX2_TIMER2_SC                 BX2_TIMER_BASE + 0x2c
+#define  BX2_TIMER3_CFG                BX2_TIMER_BASE + 0x30
+#define  BX2_TIMER3_EW                 BX2_TIMER_BASE + 0x34
+#define  BX2_TIMER3_CC                 BX2_TIMER_BASE + 0x38
+#define  BX2_TIMER3_SC                 BX2_TIMER_BASE + 0x3c
+#define  BX2_TIMERS_S                  BX2_TIMER_BASE + 0x40
+#define  BX2_TIMER_IRQ                 BX2_TIMER_BASE + 0x44
+
+//********************************************************  
+// ICU CONFIGURATION REGISTERS
+//********************************************************
+//============================================
+//=== ICU DEFINES
+//============================================
+#define BX2_CEVAX_DMSS_ICU_BASE       0x2000        
+#define BX2_CEVAX_DMSS_ICU_ISRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x200
+#define BX2_CEVAX_DMSS_ICU_ICRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x220
+#define BX2_CEVAX_DMSS_ICU_IGRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x240
+#define BX2_CEVAX_DMSS_ICU_IMRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x260
+#define BX2_CEVAX_DMSS_ICU_ISCRX_S_ADDR    BX2_CEVAX_DMSS_ICU_BASE + 0x280
+ 
+ 
+#define BX2_CEVAX_DMSS_ICU_IGMR_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x2E0
+#define BX2_CEVAX_DMSS_ICU_IVAX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x308
+#define BX2_CEVAX_DMSS_ICU_ICFGX_ADDR      BX2_CEVAX_DMSS_ICU_BASE + 0x400
+
+
+#define  BX2_ISR0       0x2200
+
+#define BX2_ISR0_COM_REG0 (1 << 0)
+#define BX2_ISR0_COM_REG1 (1 << 1)
+#define BX2_ISR0_COM_REG2 (1 << 2)
+#define BX2_ISR0_COM_REG3 (1 << 3)
+
+#define  BX2_ISR1       0x2204
+#define  BX2_ISR2       0x2208
+#define  BX2_ISR3       0x220C
+#define  BX2_ISR4       0x2210
+#define  BX2_ISR5       0x2214
+#define  BX2_ISR6       0x2218
+#define  BX2_ISR7       0x221C
+
+
+
+#define  BX2_IMR0       0x2260
+#define  BX2_IMR1       0x2264
+#define  BX2_IMR2       0x2268
+#define  BX2_IMR3       0x226C
+#define  BX2_IMR4       0x2270
+#define  BX2_IMR5       0x2274
+#define  BX2_IMR6       0x2278
+#define  BX2_IMR7       0x227C
+
+
+//#define  IVA1       0x2304
+#define  BX2_IVA1       0x2308
+#define  BX2_IVA2       0x230C
+#define  BX2_IVA3       0x2310
+#define  BX2_IVA4       0x2314
+#define  BX2_IVA5       0x2318
+#define  BX2_IVA6       0x231C
+#define  BX2_IVA7       0x2320
+#define  BX2_IVA8       0x2324
+
+#define  BX2_IGR0       0x2240
+#define  BX2_IGR1       0x2244
+#define  BX2_IGR2       0x2248
+#define  BX2_IGR3       0x224C
+#define  BX2_IGR4       0x2250
+#define  BX2_IGR5       0x2254
+#define  BX2_IGR6       0x2258
+#define  BX2_IGR7       0x225C
+
+
+#define  BX2_ICR0       0x2220
+#define  BX2_ICR1       0x2224
+#define  BX2_ICR2       0x2228
+#define  BX2_ICR3       0x222C
+#define  BX2_ICR4       0x2230
+#define  BX2_ICR5       0x2234
+#define  BX2_ICR6       0x2238
+#define  BX2_ICR7       0x223C
+
+#define  BX2_IGMR        0x22e0
+
+
+
+
+
+#define  BX2_ICFG0       0x2400
+#define  BX2_ICFG1       0x2404
+#define  BX2_ICFG2       0x2408
+#define  BX2_ICFG3       0x240C
+#define  BX2_ICFG4       0x2410
+#define  BX2_ICFG5       0x2414
+#define  BX2_ICFG6       0x2418
+#define  BX2_ICFG7       0x241C
+#define  BX2_ICFG8       0x2420
+#define  BX2_ICFG9       0x2424
+#define  BX2_ICFG10      0x2428
+#define  BX2_ICFG11      0x242C
+#define  BX2_ICFG12      0x2430
+#define  BX2_ICFG13      0x2434
+#define  BX2_ICFG14      0x2438
+#define  BX2_ICFG15      0x243C
+#define  BX2_ICFG16      0x2440
+#define  BX2_ICFG17      0x2444
+#define  BX2_ICFG18      0x2448
+#define  BX2_ICFG19      0x244C
+#define  BX2_ICFG20      0x2450
+#define  BX2_ICFG21      0x2454
+#define  BX2_ICFG22      0x2458
+#define  BX2_ICFG23      0x245C
+#define  BX2_ICFG24      0x2460
+#define  BX2_ICFG25      0x2464
+#define  BX2_ICFG26      0x2468
+#define  BX2_ICFG27      0x246C
+#define  BX2_ICFG28      0x2470
+#define  BX2_ICFG29      0x2474
+#define  BX2_ICFG30      0x2478
+#define  BX2_ICFG31      0x247C
+
+//********************************************************  
+// ICU CONFIGURATION REGISTERS
+//********************************************************
+//============================================
+//=== ICU DEFINES
+//============================================
+/*
+#define BX2_CEVAX_DMSS_ICU_BASE       0x2000        
+#define BX2_CEVAX_DMSS_ICU_ISRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x200
+#define BX2_CEVAX_DMSS_ICU_ICRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x220
+#define BX2_CEVAX_DMSS_ICU_IGRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x240
+#define BX2_CEVAX_DMSS_ICU_IMRX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x260
+#define BX2_CEVAX_DMSS_ICU_ISCRX_S_ADDR    BX2_CEVAX_DMSS_ICU_BASE + 0x280
+ 
+ 
+#define BX2_CEVAX_DMSS_ICU_IGMR_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x2E0
+#define BX2_CEVAX_DMSS_ICU_IVAX_ADDR       BX2_CEVAX_DMSS_ICU_BASE + 0x308
+#define BX2_CEVAX_DMSS_ICU_ICFGX_ADDR      BX2_CEVAX_DMSS_ICU_BASE + 0x400
+
+
+#define  BX2_ISR0       0x2200
+#define  BX2_ISR1       0x2204
+#define  BX2_ISR2       0x2208
+#define  BX2_ISR3       0x220C
+#define  BX2_ISR4       0x2210
+#define  BX2_ISR5       0x2214
+#define  BX2_ISR6       0x2218
+#define  BX2_ISR7       0x221C
+
+
+
+#define  BX2_IMR0       0x2260
+#define  BX2_IMR1       0x2264
+#define  BX2_IMR2       0x2268
+#define  BX2_IMR3       0x226C
+#define  BX2_IMR4       0x2270
+#define  BX2_IMR5       0x2274
+#define  BX2_IMR6       0x2278
+#define  BX2_IMR7       0x227C
+
+
+//#define  BX2_IVA1       0x2304
+//#define  BX2_IVA2       0x2308
+//#define  BX2_IVA3       0x230C
+//#define  BX2_IVA4       0x2310
+//#define  BX2_IVA5       0x2314
+//#define  BX2_IVA6       0x2318
+//#define  BX2_IVA7       0x231C
+//#define  BX2_IVA8       0x2320
+
+#define  BX2_IGR0       0x2240
+#define  BX2_IGR1       0x2244
+#define  BX2_IGR2       0x2248
+#define  BX2_IGR3       0x224C
+#define  BX2_IGR4       0x2250
+#define  BX2_IGR5       0x2254
+#define  BX2_IGR6       0x2258
+#define  BX2_IGR7       0x225C
+
+
+#define  BX2_ICR0       0x2220
+#define  BX2_ICR1       0x2224
+#define  BX2_ICR2       0x2228
+#define  BX2_ICR3       0x222C
+#define  BX2_ICR4       0x2230
+#define  BX2_ICR5       0x2234
+#define  BX2_ICR6       0x2238
+#define  BX2_ICR7       0x223C
+
+#define  BX2_IGMR        0x22e0
+
+
+
+
+
+#define  BX2_ICFG0       0x2400
+#define  BX2_ICFG1       0x2404
+#define  BX2_ICFG2       0x2408
+#define  BX2_ICFG3       0x240C
+#define  BX2_ICFG4       0x2410
+#define  BX2_ICFG5       0x2414
+#define  BX2_ICFG6       0x2418
+#define  BX2_ICFG7       0x241C
+*/
+
+
+//********************************************************	
+// External Interrupt CONFIGURATION REGISTERS
+//********************************************************
+
+#define  BX2_EXCFG1     0x3000
+#define  BX2_EXCFG2     0x3004
+#define  BX2_EXCFG3     0x3008
+#define  BX2_EXCFG4     0x300C
+#define  BX2_EXCFG5     0x3010
+#define  BX2_EXCFG6     0x3014
+#define  BX2_EXCFG7     0x3018
+#define  BX2_EXCFG8     0x301C
+#define  BX2_EXCFG9     0x3020
+#define  BX2_EXCFG10    0x3024
+
+#define  BX2_EXINT_START    0x3200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MCCI Configuration Registers
+#define  BX2_MSS_MCCI_BASE             0x0000
+#define  BX2_MSS_MCCI_COM_REG0_ADDR    BX2_MSS_MCCI_BASE + 0x00
+#define  BX2_MSS_MCCI_COM_REG1_ADDR    BX2_MSS_MCCI_BASE + 0x04
+#define  BX2_MSS_MCCI_COM_REG2_ADDR    BX2_MSS_MCCI_BASE + 0x08
+#define  BX2_MSS_MCCI_COM_REG3_ADDR    BX2_MSS_MCCI_BASE + 0x0c
+#define  BX2_MSS_MCCI_COM_REG4_ADDR    BX2_MSS_MCCI_BASE + 0x10
+#define  BX2_MSS_MCCI_COM_REG5_ADDR    BX2_MSS_MCCI_BASE + 0x14
+#define  BX2_MSS_MCCI_COM_REG6_ADDR    BX2_MSS_MCCI_BASE + 0x18
+#define  BX2_MSS_MCCI_COM_REG7_ADDR    BX2_MSS_MCCI_BASE + 0x1c
+#define  BX2_MSS_MCCI_COM_REG8_ADDR    BX2_MSS_MCCI_BASE + 0x20
+#define  BX2_MSS_MCCI_COM_REG9_ADDR    BX2_MSS_MCCI_BASE + 0x24
+#define  BX2_MSS_MCCI_COM_REG10_ADDR   BX2_MSS_MCCI_BASE + 0x28
+#define  BX2_MSS_MCCI_COM_REG11_ADDR   BX2_MSS_MCCI_BASE + 0x2c
+#define  BX2_MSS_MCCI_COM_REG12_ADDR   BX2_MSS_MCCI_BASE + 0x30
+#define  BX2_MSS_MCCI_COM_REG13_ADDR   BX2_MSS_MCCI_BASE + 0x34
+#define  BX2_MSS_MCCI_COM_REG14_ADDR   BX2_MSS_MCCI_BASE + 0x38
+#define  BX2_MSS_MCCI_COM_REG15_ADDR   BX2_MSS_MCCI_BASE + 0x3c
+#define  BX2_MSS_MCCI_COM_REG16_ADDR   BX2_MSS_MCCI_BASE + 0x40
+#define  BX2_MSS_MCCI_COM_REG17_ADDR   BX2_MSS_MCCI_BASE + 0x44
+#define  BX2_MSS_MCCI_COM_REG18_ADDR   BX2_MSS_MCCI_BASE + 0x48
+#define  BX2_MSS_MCCI_COM_REG19_ADDR   BX2_MSS_MCCI_BASE + 0x4c
+#define  BX2_MSS_MCCI_COM_REG20_ADDR   BX2_MSS_MCCI_BASE + 0x50
+#define  BX2_MSS_MCCI_COM_REG21_ADDR   BX2_MSS_MCCI_BASE + 0x54
+#define  BX2_MSS_MCCI_COM_REG22_ADDR   BX2_MSS_MCCI_BASE + 0x58
+#define  BX2_MSS_MCCI_COM_REG23_ADDR   BX2_MSS_MCCI_BASE + 0x5c
+#define  BX2_MSS_MCCI_COM_REG24_ADDR   BX2_MSS_MCCI_BASE + 0x60
+#define  BX2_MSS_MCCI_COM_REG25_ADDR   BX2_MSS_MCCI_BASE + 0x64
+#define  BX2_MSS_MCCI_COM_REG26_ADDR   BX2_MSS_MCCI_BASE + 0x68
+#define  BX2_MSS_MCCI_COM_REG27_ADDR   BX2_MSS_MCCI_BASE + 0x6c
+#define  BX2_MSS_MCCI_COM_REG28_ADDR   BX2_MSS_MCCI_BASE + 0x70
+#define  BX2_MSS_MCCI_COM_REG29_ADDR   BX2_MSS_MCCI_BASE + 0x74
+#define  BX2_MSS_MCCI_COM_REG30_ADDR   BX2_MSS_MCCI_BASE + 0x78
+#define  BX2_MSS_MCCI_COM_REG31_ADDR   BX2_MSS_MCCI_BASE + 0x7c
+#define  BX2_MSS_MCCI_COM_STS_ADDR     BX2_MSS_MCCI_BASE + 0x80
+#define  BX2_MSS_MCCI_COM_INT_EN_ADDR  BX2_MSS_MCCI_BASE + 0x84
+#define  BX2_MSS_MCCI_START_ADD_ADDR   BX2_MSS_MCCI_BASE + 0x90
+#define  BX2_MSS_MCCI_TOP_ADD_ADDR     BX2_MSS_MCCI_BASE + 0x94
+#define  BX2_MSS_MCCI_SNOOP_CSR_ADDR   BX2_MSS_MCCI_BASE + 0x98
+
+// MCCI Configuration Registers
+#define  BX2_SLAVE_MCCI_BASE             0x400000
+#define  BX2_SLAVE_MCCI_COM_REG0_ADDR    BX2_SLAVE_MCCI_BASE + 0x00
+#define  BX2_SLAVE_MCCI_COM_REG1_ADDR    BX2_SLAVE_MCCI_BASE + 0x04
+#define  BX2_SLAVE_MCCI_COM_REG2_ADDR    BX2_SLAVE_MCCI_BASE + 0x08
+#define  BX2_SLAVE_MCCI_COM_REG3_ADDR    BX2_SLAVE_MCCI_BASE + 0x0c
+#define  BX2_SLAVE_MCCI_COM_REG4_ADDR    BX2_SLAVE_MCCI_BASE + 0x10
+#define  BX2_SLAVE_MCCI_COM_REG5_ADDR    BX2_SLAVE_MCCI_BASE + 0x14
+#define  BX2_SLAVE_MCCI_COM_REG6_ADDR    BX2_SLAVE_MCCI_BASE + 0x18
+#define  BX2_SLAVE_MCCI_COM_REG7_ADDR    BX2_SLAVE_MCCI_BASE + 0x1c
+#define  BX2_SLAVE_MCCI_COM_REG8_ADDR    BX2_SLAVE_MCCI_BASE + 0x20
+#define  BX2_SLAVE_MCCI_COM_REG9_ADDR    BX2_SLAVE_MCCI_BASE + 0x24
+#define  BX2_SLAVE_MCCI_COM_REG10_ADDR   BX2_SLAVE_MCCI_BASE + 0x28
+#define  BX2_SLAVE_MCCI_COM_REG11_ADDR   BX2_SLAVE_MCCI_BASE + 0x2c
+#define  BX2_SLAVE_MCCI_COM_REG12_ADDR   BX2_SLAVE_MCCI_BASE + 0x30
+#define  BX2_SLAVE_MCCI_COM_REG13_ADDR   BX2_SLAVE_MCCI_BASE + 0x34
+#define  BX2_SLAVE_MCCI_COM_REG14_ADDR   BX2_SLAVE_MCCI_BASE + 0x38
+#define  BX2_SLAVE_MCCI_COM_REG15_ADDR   BX2_SLAVE_MCCI_BASE + 0x3c
+#define  BX2_SLAVE_MCCI_COM_REG16_ADDR   BX2_SLAVE_MCCI_BASE + 0x40
+#define  BX2_SLAVE_MCCI_COM_REG17_ADDR   BX2_SLAVE_MCCI_BASE + 0x44
+#define  BX2_SLAVE_MCCI_COM_REG18_ADDR   BX2_SLAVE_MCCI_BASE + 0x48
+#define  BX2_SLAVE_MCCI_COM_REG19_ADDR   BX2_SLAVE_MCCI_BASE + 0x4c
+#define  BX2_SLAVE_MCCI_COM_REG20_ADDR   BX2_SLAVE_MCCI_BASE + 0x50
+#define  BX2_SLAVE_MCCI_COM_REG21_ADDR   BX2_SLAVE_MCCI_BASE + 0x54
+#define  BX2_SLAVE_MCCI_COM_REG22_ADDR   BX2_SLAVE_MCCI_BASE + 0x58
+#define  BX2_SLAVE_MCCI_COM_REG23_ADDR   BX2_SLAVE_MCCI_BASE + 0x5c
+#define  BX2_SLAVE_MCCI_COM_REG24_ADDR   BX2_SLAVE_MCCI_BASE + 0x60
+#define  BX2_SLAVE_MCCI_COM_REG25_ADDR   BX2_SLAVE_MCCI_BASE + 0x64
+#define  BX2_SLAVE_MCCI_COM_REG26_ADDR   BX2_SLAVE_MCCI_BASE + 0x68
+#define  BX2_SLAVE_MCCI_COM_REG27_ADDR   BX2_SLAVE_MCCI_BASE + 0x6c
+#define  BX2_SLAVE_MCCI_COM_REG28_ADDR   BX2_SLAVE_MCCI_BASE + 0x70
+#define  BX2_SLAVE_MCCI_COM_REG29_ADDR   BX2_SLAVE_MCCI_BASE + 0x74
+#define  BX2_SLAVE_MCCI_COM_REG30_ADDR   BX2_SLAVE_MCCI_BASE + 0x78
+#define  BX2_SLAVE_MCCI_COM_REG31_ADDR   BX2_SLAVE_MCCI_BASE + 0x7c
+  
+#define  BX2_SLAVE_MCCI_CORE_VERSION_ADDR 0x00400174
+#define  BX2_SLAVE_MCCI_CORE_ID_ADDR      0x00400178
+
+//********************************************************  
+// DMAN PARAM
+//********************************************************
+
+#define  BX2_DMAN_Q0_BASE         0x1100
+#define  BX2_DMAN_Q1_BASE         0x1140
+#define  BX2_DMAN_Q2_BASE         0x1180
+#define  BX2_DMAN_Q3_BASE         0x11c0
+#define  BX2_DMAN_Q4_BASE         0x1200
+#define  BX2_DMAN_Q5_BASE         0x1240
+#define  BX2_DMAN_Q6_BASE         0x1280
+#define  BX2_DMAN_Q7_BASE         0x12c0
+#define  BX2_DMAN_Q8_BASE         0x1300
+#define  BX2_DMAN_Q9_BASE         0x1340
+#define  BX2_DMAN_Q10_BASE        0x1380
+#define  BX2_DMAN_Q11_BASE        0x13c0
+#define  BX2_DMAN_Q12_BASE        0x1400
+#define  BX2_DMAN_Q13_BASE        0x1440
+#define  BX2_DMAN_Q14_BASE        0x1480
+#define  BX2_DMAN_Q15_BASE        0x14c0
+
+#define  BX2_QX_EN_DEPTH          0x0
+#define  BX2_QX_FIRST_ADDR        0x4
+#define  BX2_QX_BASE_PTR          0x8
+#define  BX2_QX_CHNK_SIZE         0x0c
+#define  BX2_QX_DSC_EN_INC0       0x10
+#define  BX2_QX_STATUS            0x14
+#define  BX2_QX_RPTR_INT          0x18
+#define  BX2_QX_DSC_EXT_PTR       0x1c
+#define  BX2_QX_DSC_INT_PTR       0x20
+#define  BX2_QX_DSC_TCTL          0x24
+#define  BX2_QX_DSC_TFRAME_LEN    0x28
+#define  BX2_QX_DSC_EN_INC1       0x2C
+#define  BX2_QX_DSC_EN_CNT        0x30
+
+#define  BX2_Q0_EN_DEPTH          (BX2_DMAN_Q0_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q0_FIRST_ADDR        (BX2_DMAN_Q0_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q0_BASE_PTR          (BX2_DMAN_Q0_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q0_CHNK_SIZE         (BX2_DMAN_Q0_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q0_DSC_EN_INC0       (BX2_DMAN_Q0_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q0_STATUS            (BX2_DMAN_Q0_BASE + BX2_QX_STATUS)
+#define  BX2_Q0_RPTR_INT          (BX2_DMAN_Q0_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q0_DSC_EXT_PTR       (BX2_DMAN_Q0_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q0_DSC_INT_PTR       (BX2_DMAN_Q0_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q0_DSC_TCTL          (BX2_DMAN_Q0_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q0_DSC_TFRAME_LEN    (BX2_DMAN_Q0_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q0_DSC_EN_INC1       (BX2_DMAN_Q0_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q0_DSC_EN_CNT        (BX2_DMAN_Q0_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q1_EN_DEPTH          (BX2_DMAN_Q1_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q1_FIRST_ADDR        (BX2_DMAN_Q1_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q1_BASE_PTR          (BX2_DMAN_Q1_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q1_CHNK_SIZE         (BX2_DMAN_Q1_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q1_DSC_EN_INC0       (BX2_DMAN_Q1_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q1_STATUS            (BX2_DMAN_Q1_BASE + BX2_QX_STATUS)
+#define  BX2_Q1_RPTR_INT          (BX2_DMAN_Q1_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q1_DSC_EXT_PTR       (BX2_DMAN_Q1_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q1_DSC_INT_PTR       (BX2_DMAN_Q1_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q1_DSC_TCTL          (BX2_DMAN_Q1_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q1_DSC_TFRAME_LEN    (BX2_DMAN_Q1_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q1_DSC_EN_INC1       (BX2_DMAN_Q1_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q1_DSC_EN_CNT        (BX2_DMAN_Q1_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q2_EN_DEPTH          (BX2_DMAN_Q2_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q2_FIRST_ADDR        (BX2_DMAN_Q2_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q2_BASE_PTR          (BX2_DMAN_Q2_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q2_CHNK_SIZE         (BX2_DMAN_Q2_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q2_DSC_EN_INC0       (BX2_DMAN_Q2_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q2_STATUS            (BX2_DMAN_Q2_BASE + BX2_QX_STATUS)
+#define  BX2_Q2_RPTR_INT          (BX2_DMAN_Q2_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q2_DSC_EXT_PTR       (BX2_DMAN_Q2_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q2_DSC_INT_PTR       (BX2_DMAN_Q2_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q2_DSC_TCTL          (BX2_DMAN_Q2_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q2_DSC_TFRAME_LEN    (BX2_DMAN_Q2_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q2_DSC_EN_INC1       (BX2_DMAN_Q2_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q2_DSC_EN_CNT        (BX2_DMAN_Q2_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q3_EN_DEPTH          (BX2_DMAN_Q3_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q3_FIRST_ADDR        (BX2_DMAN_Q3_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q3_BASE_PTR          (BX2_DMAN_Q3_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q3_CHNK_SIZE         (BX2_DMAN_Q3_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q3_DSC_EN_INC0       (BX2_DMAN_Q3_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q3_STATUS            (BX2_DMAN_Q3_BASE + BX2_QX_STATUS)
+#define  BX2_Q3_RPTR_INT          (BX2_DMAN_Q3_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q3_DSC_EXT_PTR       (BX2_DMAN_Q3_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q3_DSC_INT_PTR       (BX2_DMAN_Q3_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q3_DSC_TCTL          (BX2_DMAN_Q3_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q3_DSC_TFRAME_LEN    (BX2_DMAN_Q3_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q3_DSC_EN_INC1       (BX2_DMAN_Q3_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q3_DSC_EN_CNT        (BX2_DMAN_Q3_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q4_EN_DEPTH          (BX2_DMAN_Q4_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q4_FIRST_ADDR        (BX2_DMAN_Q4_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q4_BASE_PTR          (BX2_DMAN_Q4_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q4_CHNK_SIZE         (BX2_DMAN_Q4_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q4_DSC_EN_INC0       (BX2_DMAN_Q4_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q4_STATUS            (BX2_DMAN_Q4_BASE + BX2_QX_STATUS)
+#define  BX2_Q4_RPTR_INT          (BX2_DMAN_Q4_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q4_DSC_EXT_PTR       (BX2_DMAN_Q4_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q4_DSC_INT_PTR       (BX2_DMAN_Q4_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q4_DSC_TCTL          (BX2_DMAN_Q4_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q4_DSC_TFRAME_LEN    (BX2_DMAN_Q4_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q4_DSC_EN_INC1       (BX2_DMAN_Q4_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q4_DSC_EN_CNT        (BX2_DMAN_Q4_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q5_EN_DEPTH          (BX2_DMAN_Q5_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q5_FIRST_ADDR        (BX2_DMAN_Q5_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q5_BASE_PTR          (BX2_DMAN_Q5_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q5_CHNK_SIZE         (BX2_DMAN_Q5_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q5_DSC_EN_INC0       (BX2_DMAN_Q5_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q5_STATUS            (BX2_DMAN_Q5_BASE + BX2_QX_STATUS)
+#define  BX2_Q5_RPTR_INT          (BX2_DMAN_Q5_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q5_DSC_EXT_PTR       (BX2_DMAN_Q5_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q5_DSC_INT_PTR       (BX2_DMAN_Q5_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q5_DSC_TCTL          (BX2_DMAN_Q5_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q5_DSC_TFRAME_LEN    (BX2_DMAN_Q5_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q5_DSC_EN_INC1       (BX2_DMAN_Q5_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q5_DSC_EN_CNT        (BX2_DMAN_Q5_BASE + BX2_QX_DSC_EN_CNT)  
+
+#define  BX2_Q6_EN_DEPTH          (BX2_DMAN_Q6_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q6_FIRST_ADDR        (BX2_DMAN_Q6_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q6_BASE_PTR          (BX2_DMAN_Q6_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q6_CHNK_SIZE         (BX2_DMAN_Q6_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q6_DSC_EN_INC0       (BX2_DMAN_Q6_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q6_STATUS            (BX2_DMAN_Q6_BASE + BX2_QX_STATUS)
+#define  BX2_Q6_RPTR_INT          (BX2_DMAN_Q6_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q6_DSC_EXT_PTR       (BX2_DMAN_Q6_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q6_DSC_INT_PTR       (BX2_DMAN_Q6_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q6_DSC_TCTL          (BX2_DMAN_Q6_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q6_DSC_TFRAME_LEN    (BX2_DMAN_Q6_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q6_DSC_EN_INC1       (BX2_DMAN_Q6_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q6_DSC_EN_CNT        (BX2_DMAN_Q6_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q7_EN_DEPTH          (BX2_DMAN_Q7_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q7_FIRST_ADDR        (BX2_DMAN_Q7_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q7_BASE_PTR          (BX2_DMAN_Q7_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q7_CHNK_SIZE         (BX2_DMAN_Q7_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q7_DSC_EN_INC0       (BX2_DMAN_Q7_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q7_STATUS            (BX2_DMAN_Q7_BASE + BX2_QX_STATUS)
+#define  BX2_Q7_RPTR_INT          (BX2_DMAN_Q7_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q7_DSC_EXT_PTR       (BX2_DMAN_Q7_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q7_DSC_INT_PTR       (BX2_DMAN_Q7_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q7_DSC_TCTL          (BX2_DMAN_Q7_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q7_DSC_TFRAME_LEN    (BX2_DMAN_Q7_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q7_DSC_EN_INC1       (BX2_DMAN_Q7_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q7_DSC_EN_CNT        (BX2_DMAN_Q7_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q8_EN_DEPTH          (BX2_DMAN_Q8_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q8_FIRST_ADDR        (BX2_DMAN_Q8_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q8_BASE_PTR          (BX2_DMAN_Q8_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q8_CHNK_SIZE         (BX2_DMAN_Q8_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q8_DSC_EN_INC0       (BX2_DMAN_Q8_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q8_STATUS            (BX2_DMAN_Q8_BASE + BX2_QX_STATUS)
+#define  BX2_Q8_RPTR_INT          (BX2_DMAN_Q8_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q8_DSC_EXT_PTR       (BX2_DMAN_Q8_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q8_DSC_INT_PTR       (BX2_DMAN_Q8_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q8_DSC_TCTL          (BX2_DMAN_Q8_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q8_DSC_TFRAME_LEN    (BX2_DMAN_Q8_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q8_DSC_EN_INC1       (BX2_DMAN_Q8_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q8_DSC_EN_CNT        (BX2_DMAN_Q8_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q9_EN_DEPTH          (BX2_DMAN_Q9_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q9_FIRST_ADDR        (BX2_DMAN_Q9_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q9_BASE_PTR          (BX2_DMAN_Q9_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q9_CHNK_SIZE         (BX2_DMAN_Q9_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q9_DSC_EN_INC0       (BX2_DMAN_Q9_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q9_STATUS            (BX2_DMAN_Q9_BASE + BX2_QX_STATUS)
+#define  BX2_Q9_RPTR_INT          (BX2_DMAN_Q9_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q9_DSC_EXT_PTR       (BX2_DMAN_Q9_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q9_DSC_INT_PTR       (BX2_DMAN_Q9_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q9_DSC_TCTL          (BX2_DMAN_Q9_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q9_DSC_TFRAME_LEN    (BX2_DMAN_Q9_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q9_DSC_EN_INC1       (BX2_DMAN_Q9_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q9_DSC_EN_CNT        (BX2_DMAN_Q9_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q10_EN_DEPTH         (BX2_DMAN_Q10_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q10_FIRST_ADDR       (BX2_DMAN_Q10_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q10_BASE_PTR         (BX2_DMAN_Q10_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q10_CHNK_SIZE        (BX2_DMAN_Q10_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q10_DSC_EN_INC0      (BX2_DMAN_Q10_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q10_STATUS           (BX2_DMAN_Q10_BASE + BX2_QX_STATUS)
+#define  BX2_Q10_RPTR_INT         (BX2_DMAN_Q10_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q10_DSC_EXT_PTR      (BX2_DMAN_Q10_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q10_DSC_INT_PTR      (BX2_DMAN_Q10_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q10_DSC_TCTL         (BX2_DMAN_Q10_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q10_DSC_TFRAME_LEN   (BX2_DMAN_Q10_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q10_DSC_EN_INC1      (BX2_DMAN_Q10_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q10_DSC_EN_CNT       (BX2_DMAN_Q10_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q11_EN_DEPTH         (BX2_DMAN_Q11_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q11_FIRST_ADDR       (BX2_DMAN_Q11_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q11_BASE_PTR         (BX2_DMAN_Q11_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q11_CHNK_SIZE        (BX2_DMAN_Q11_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q11_DSC_EN_INC0      (BX2_DMAN_Q11_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q11_STATUS           (BX2_DMAN_Q11_BASE + BX2_QX_STATUS)
+#define  BX2_Q11_RPTR_INT         (BX2_DMAN_Q11_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q11_DSC_EXT_PTR      (BX2_DMAN_Q11_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q11_DSC_INT_PTR      (BX2_DMAN_Q11_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q11_DSC_TCTL         (BX2_DMAN_Q11_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q11_DSC_TFRAME_LEN   (BX2_DMAN_Q11_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q11_DSC_EN_INC1      (BX2_DMAN_Q11_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q11_DSC_EN_CNT       (BX2_DMAN_Q11_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q12_EN_DEPTH         (BX2_DMAN_Q12_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q12_FIRST_ADDR       (BX2_DMAN_Q12_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q12_BASE_PTR         (BX2_DMAN_Q12_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q12_CHNK_SIZE        (BX2_DMAN_Q12_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q12_DSC_EN_INC0      (BX2_DMAN_Q12_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q12_STATUS           (BX2_DMAN_Q12_BASE + BX2_QX_STATUS)
+#define  BX2_Q12_RPTR_INT         (BX2_DMAN_Q12_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q12_DSC_EXT_PTR      (BX2_DMAN_Q12_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q12_DSC_INT_PTR      (BX2_DMAN_Q12_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q12_DSC_TCTL         (BX2_DMAN_Q12_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q12_DSC_TFRAME_LEN   (BX2_DMAN_Q12_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q12_DSC_EN_INC1      (BX2_DMAN_Q12_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q12_DSC_EN_CNT       (BX2_DMAN_Q12_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q13_EN_DEPTH         (BX2_DMAN_Q13_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q13_FIRST_ADDR       (BX2_DMAN_Q13_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q13_BASE_PTR         (BX2_DMAN_Q13_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q13_CHNK_SIZE        (BX2_DMAN_Q13_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q13_DSC_EN_INC0      (BX2_DMAN_Q13_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q13_STATUS           (BX2_DMAN_Q13_BASE + BX2_QX_STATUS)
+#define  BX2_Q13_RPTR_INT         (BX2_DMAN_Q13_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q13_DSC_EXT_PTR      (BX2_DMAN_Q13_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q13_DSC_INT_PTR      (BX2_DMAN_Q13_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q13_DSC_TCTL         (BX2_DMAN_Q13_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q13_DSC_TFRAME_LEN   (BX2_DMAN_Q13_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q13_DSC_EN_INC1      (BX2_DMAN_Q13_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q13_DSC_EN_CNT       (BX2_DMAN_Q13_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q14_EN_DEPTH         (BX2_DMAN_Q14_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q14_FIRST_ADDR       (BX2_DMAN_Q14_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q14_BASE_PTR         (BX2_DMAN_Q14_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q14_CHNK_SIZE        (BX2_DMAN_Q14_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q14_DSC_EN_INC0      (BX2_DMAN_Q14_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q14_STATUS           (BX2_DMAN_Q14_BASE + BX2_QX_STATUS)
+#define  BX2_Q14_RPTR_INT         (BX2_DMAN_Q14_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q14_DSC_EXT_PTR      (BX2_DMAN_Q14_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q14_DSC_INT_PTR      (BX2_DMAN_Q14_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q14_DSC_TCTL         (BX2_DMAN_Q14_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q14_DSC_TFRAME_LEN   (BX2_DMAN_Q14_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q14_DSC_EN_INC1      (BX2_DMAN_Q14_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q14_DSC_EN_CNT       (BX2_DMAN_Q14_BASE + BX2_QX_DSC_EN_CNT)
+
+#define  BX2_Q15_EN_DEPTH         (BX2_DMAN_Q15_BASE + BX2_QX_EN_DEPTH) 
+#define  BX2_Q15_FIRST_ADDR       (BX2_DMAN_Q15_BASE + BX2_QX_FIRST_ADDR)
+#define  BX2_Q15_BASE_PTR         (BX2_DMAN_Q15_BASE + BX2_QX_BASE_PTR)
+#define  BX2_Q15_CHNK_SIZE        (BX2_DMAN_Q15_BASE + BX2_QX_CHNK_SIZE)
+#define  BX2_Q15_DSC_EN_INC0      (BX2_DMAN_Q15_BASE + BX2_QX_DSC_EN_INC0)
+#define  BX2_Q15_STATUS           (BX2_DMAN_Q15_BASE + BX2_QX_STATUS)
+#define  BX2_Q15_RPTR_INT         (BX2_DMAN_Q15_BASE + BX2_QX_RPTR_INT)
+#define  BX2_Q15_DSC_EXT_PTR      (BX2_DMAN_Q15_BASE + BX2_QX_DSC_EXT_PTR)
+#define  BX2_Q15_DSC_INT_PTR      (BX2_DMAN_Q15_BASE + BX2_QX_DSC_INT_PTR) 
+#define  BX2_Q15_DSC_TCTL         (BX2_DMAN_Q15_BASE + BX2_QX_DSC_TCTL)
+#define  BX2_Q15_DSC_TFRAME_LEN   (BX2_DMAN_Q15_BASE + BX2_QX_DSC_TFRAME_LEN)
+#define  BX2_Q15_DSC_EN_INC1      (BX2_DMAN_Q15_BASE + BX2_QX_DSC_EN_INC1)
+#define  BX2_Q15_DSC_EN_CNT       (BX2_DMAN_Q15_BASE + BX2_QX_DSC_EN_CNT)
+
+
+#define  BX2_DMAN_B0_BASE         0x1300
+#define  BX2_DMAN_B1_BASE         0x1340
+#define  BX2_DMAN_B2_BASE         0x1380
+#define  BX2_DMAN_B3_BASE         0x13c0
+#define  BX2_DMAN_B4_BASE         0x1400
+#define  BX2_DMAN_B5_BASE         0x1440
+#define  BX2_DMAN_B6_BASE         0x1480
+#define  BX2_DMAN_B7_BASE         0x14c0
+#define  BX2_DMAN_B8_BASE         0x1500
+#define  BX2_DMAN_B9_BASE         0x1540
+#define  BX2_DMAN_B10_BASE        0x1580
+#define  BX2_DMAN_B11_BASE        0x15c0
+#define  BX2_DMAN_B12_BASE        0x1600
+#define  BX2_DMAN_B13_BASE        0x1640
+#define  BX2_DMAN_B14_BASE        0x1680
+#define  BX2_DMAN_B15_BASE        0x16c0
+
+
+#define  BX2_BX_START_ADDR        0x0
+#define  BX2_BX_SIZE              0x4
+#define  BX2_BX_INC_PTR_CTL       0x8
+#define  BX2_BX_EXT_INC_DIR       0x0c
+#define  BX2_BX_FULL_EMPTY_CTL    0x10
+#define  BX2_BX_RPTR              0x14
+#define  BX2_BX_WPTR              0x18
+#define  BX2_BX_EXPCTD_WPTR       0x1c
+#define  BX2_BX_EXPCTD_RPTR       0x20
+#define  BX2_BX_SNIFER_OUT_ACC    0x24
+
+#define  BX2_B0_START_ADDR        (BX2_DMAN_B0_BASE + BX2_BX_START_ADDR)
+#define  BX2_B0_SIZE              (BX2_DMAN_B0_BASE + BX2_BX_SIZE)
+#define  BX2_B0_INC_PTR_CTL       (BX2_DMAN_B0_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B0_EXT_INC_DIR       (BX2_DMAN_B0_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B0_FULL_EMPTY_CTL    (BX2_DMAN_B0_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B0_WPTR              (BX2_DMAN_B0_BASE + BX2_BX_WPTR)
+#define  BX2_B0_RPTR              (BX2_DMAN_B0_BASE + BX2_BX_RPTR)
+#define  BX2_B0_EXPCTD_WPTR       (BX2_DMAN_B0_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B0_EXPCTD_RPTR       (BX2_DMAN_B0_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B0_SNIFER_OUT_ACC    (BX2_DMAN_B0_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B1_START_ADDR        (BX2_DMAN_B1_BASE + BX2_BX_START_ADDR)
+#define  BX2_B1_SIZE              (BX2_DMAN_B1_BASE + BX2_BX_SIZE)
+#define  BX2_B1_INC_PTR_CTL       (BX2_DMAN_B1_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B1_EXT_INC_DIR       (BX2_DMAN_B1_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B1_FULL_EMPTY_CTL    (BX2_DMAN_B1_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B1_WPTR              (BX2_DMAN_B1_BASE + BX2_BX_WPTR)
+#define  BX2_B1_RPTR              (BX2_DMAN_B1_BASE + BX2_BX_RPTR)
+#define  BX2_B1_EXPCTD_WPTR       (BX2_DMAN_B1_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B1_EXPCTD_RPTR       (BX2_DMAN_B1_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B1_SNIFER_OUT_ACC    (BX2_DMAN_B1_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B2_START_ADDR        (BX2_DMAN_B2_BASE + BX2_BX_START_ADDR)
+#define  BX2_B2_SIZE              (BX2_DMAN_B2_BASE + BX2_BX_SIZE)
+#define  BX2_B2_INC_PTR_CTL       (BX2_DMAN_B2_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B2_EXT_INC_DIR       (BX2_DMAN_B2_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B2_FULL_EMPTY_CTL    (BX2_DMAN_B2_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B2_WPTR              (BX2_DMAN_B2_BASE + BX2_BX_WPTR)
+#define  BX2_B2_RPTR              (BX2_DMAN_B2_BASE + BX2_BX_RPTR)
+#define  BX2_B2_EXPCTD_WPTR       (BX2_DMAN_B2_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B2_EXPCTD_RPTR       (BX2_DMAN_B2_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B2_SNIFER_OUT_ACC    (BX2_DMAN_B2_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B3_START_ADDR        (BX2_DMAN_B3_BASE + BX2_BX_START_ADDR)
+#define  BX2_B3_SIZE              (BX2_DMAN_B3_BASE + BX2_BX_SIZE)
+#define  BX2_B3_INC_PTR_CTL       (BX2_DMAN_B3_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B3_EXT_INC_DIR       (BX2_DMAN_B3_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B3_FULL_EMPTY_CTL    (BX2_DMAN_B3_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B3_WPTR              (BX2_DMAN_B3_BASE + BX2_BX_WPTR)
+#define  BX2_B3_RPTR              (BX2_DMAN_B3_BASE + BX2_BX_RPTR)
+#define  BX2_B3_EXPCTD_WPTR       (BX2_DMAN_B3_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B3_EXPCTD_RPTR       (BX2_DMAN_B3_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B3_SNIFER_OUT_ACC    (BX2_DMAN_B3_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B4_START_ADDR        (BX2_DMAN_B4_BASE + BX2_BX_START_ADDR)
+#define  BX2_B4_SIZE              (BX2_DMAN_B4_BASE + BX2_BX_SIZE)
+#define  BX2_B4_INC_PTR_CTL       (BX2_DMAN_B4_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B4_EXT_INC_DIR       (BX2_DMAN_B4_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B4_FULL_EMPTY_CTL    (BX2_DMAN_B4_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B4_WPTR              (BX2_DMAN_B4_BASE + BX2_BX_WPTR)
+#define  BX2_B4_RPTR              (BX2_DMAN_B4_BASE + BX2_BX_RPTR)
+#define  BX2_B4_EXPCTD_WPTR       (BX2_DMAN_B4_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B4_EXPCTD_RPTR       (BX2_DMAN_B4_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B4_SNIFER_OUT_ACC    (BX2_DMAN_B4_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B5_START_ADDR        (BX2_DMAN_B5_BASE + BX2_BX_START_ADDR)
+#define  BX2_B5_SIZE              (BX2_DMAN_B5_BASE + BX2_BX_SIZE)
+#define  BX2_B5_INC_PTR_CTL       (BX2_DMAN_B5_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B5_EXT_INC_DIR       (BX2_DMAN_B5_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B5_FULL_EMPTY_CTL    (BX2_DMAN_B5_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B5_WPTR              (BX2_DMAN_B5_BASE + BX2_BX_WPTR)
+#define  BX2_B5_RPTR              (BX2_DMAN_B5_BASE + BX2_BX_RPTR)
+#define  BX2_B5_EXPCTD_WPTR       (BX2_DMAN_B5_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B5_EXPCTD_RPTR       (BX2_DMAN_B5_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B5_SNIFER_OUT_ACC    (BX2_DMAN_B5_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B6_START_ADDR        (BX2_DMAN_B6_BASE + BX2_BX_START_ADDR)
+#define  BX2_B6_SIZE              (BX2_DMAN_B6_BASE + BX2_BX_SIZE)
+#define  BX2_B6_INC_PTR_CTL       (BX2_DMAN_B6_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B6_EXT_INC_DIR       (BX2_DMAN_B6_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B6_FULL_EMPTY_CTL    (BX2_DMAN_B6_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B6_WPTR              (BX2_DMAN_B6_BASE + BX2_BX_WPTR)
+#define  BX2_B6_RPTR              (BX2_DMAN_B6_BASE + BX2_BX_RPTR)
+#define  BX2_B6_EXPCTD_WPTR       (BX2_DMAN_B6_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B6_EXPCTD_RPTR       (BX2_DMAN_B6_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B6_SNIFER_OUT_ACC    (BX2_DMAN_B6_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B7_START_ADDR        (BX2_DMAN_B7_BASE + BX2_BX_START_ADDR)
+#define  BX2_B7_SIZE              (BX2_DMAN_B7_BASE + BX2_BX_SIZE)
+#define  BX2_B7_INC_PTR_CTL       (BX2_DMAN_B7_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B7_EXT_INC_DIR       (BX2_DMAN_B7_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B7_FULL_EMPTY_CTL    (BX2_DMAN_B7_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B7_WPTR              (BX2_DMAN_B7_BASE + BX2_BX_WPTR)
+#define  BX2_B7_RPTR              (BX2_DMAN_B7_BASE + BX2_BX_RPTR)
+#define  BX2_B7_EXPCTD_WPTR       (BX2_DMAN_B7_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B7_EXPCTD_RPTR       (BX2_DMAN_B7_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B7_SNIFER_OUT_ACC    (BX2_DMAN_B7_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B8_START_ADDR        (BX2_DMAN_B8_BASE + BX2_BX_START_ADDR)
+#define  BX2_B8_SIZE              (BX2_DMAN_B8_BASE + BX2_BX_SIZE)
+#define  BX2_B8_INC_PTR_CTL       (BX2_DMAN_B8_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B8_EXT_INC_DIR       (BX2_DMAN_B8_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B8_FULL_EMPTY_CTL    (BX2_DMAN_B8_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B8_WPTR              (BX2_DMAN_B8_BASE + BX2_BX_WPTR)
+#define  BX2_B8_RPTR              (BX2_DMAN_B8_BASE + BX2_BX_RPTR)
+#define  BX2_B8_EXPCTD_WPTR       (BX2_DMAN_B8_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B8_EXPCTD_RPTR       (BX2_DMAN_B8_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B8_SNIFER_OUT_ACC    (BX2_DMAN_B8_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B9_START_ADDR        (BX2_DMAN_B9_BASE + BX2_BX_START_ADDR)
+#define  BX2_B9_SIZE              (BX2_DMAN_B9_BASE + BX2_BX_SIZE)
+#define  BX2_B9_INC_PTR_CTL       (BX2_DMAN_B9_BASE + BX2_BX_INC_PTR_CTL)
+#define  BX2_B9_EXT_INC_DIR       (BX2_DMAN_B9_BASE + BX2_BX_EXT_INC_DIR)
+#define  BX2_B9_FULL_EMPTY_CTL    (BX2_DMAN_B9_BASE + BX2_BX_FULL_EMPTY_CTL)
+#define  BX2_B9_WPTR              (BX2_DMAN_B9_BASE + BX2_BX_WPTR)
+#define  BX2_B9_RPTR              (BX2_DMAN_B9_BASE + BX2_BX_RPTR)
+#define  BX2_B9_EXPCTD_WPTR       (BX2_DMAN_B9_BASE + BX2_BX_EXPCTD_WPTR)
+#define  BX2_B9_EXPCTD_RPTR       (BX2_DMAN_B9_BASE + BX2_BX_EXPCTD_RPTR)
+#define  BX2_B9_SNIFER_OUT_ACC    (BX2_DMAN_B9_BASE + BX2_BX_SNIFER_OUT_ACC)
+
+#define  BX2_B10_START_ADDR       (BX2_DMAN_B10_BASE +BX2_ BX_START_ADDR)
+#define  BX2_B10_SIZE             (BX2_DMAN_B10_BASE +BX2_ BX_SIZE)
+#define  BX2_B10_INC_PTR_CTL      (BX2_DMAN_B10_BASE +BX2_ BX_INC_PTR_CTL)
+#define  BX2_B10_EXT_INC_DIR      (BX2_DMAN_B10_BASE +BX2_ BX_EXT_INC_DIR)
+#define  BX2_B10_FULL_EMPTY_CTL   (BX2_DMAN_B10_BASE +BX2_ BX_FULL_EMPTY_CTL)
+#define  BX2_B10_WPTR             (BX2_DMAN_B10_BASE +BX2_ BX_WPTR)
+#define  BX2_B10_RPTR             (BX2_DMAN_B10_BASE +BX2_ BX_RPTR)
+#define  BX2_B10_EXPCTD_WPTR      (BX2_DMAN_B10_BASE +BX2_ BX_EXPCTD_WPTR)
+#define  BX2_B10_EXPCTD_RPTR      (BX2_DMAN_B10_BASE +BX2_ BX_EXPCTD_RPTR)
+#define  BX2_B10_SNIFER_OUT_ACC   (BX2_DMAN_B10_BASE +BX2_ BX_SNIFER_OUT_ACC)
+
+#define  BX2_B11_START_ADDR       (BX2_DMAN_B11_BASE +BX2_ BX_START_ADDR)
+#define  BX2_B11_SIZE             (BX2_DMAN_B11_BASE +BX2_ BX_SIZE)
+#define  BX2_B11_INC_PTR_CTL      (BX2_DMAN_B11_BASE +BX2_ BX_INC_PTR_CTL)
+#define  BX2_B11_EXT_INC_DIR      (BX2_DMAN_B11_BASE +BX2_ BX_EXT_INC_DIR)
+#define  BX2_B11_FULL_EMPTY_CTL   (BX2_DMAN_B11_BASE +BX2_ BX_FULL_EMPTY_CTL)
+#define  BX2_B11_WPTR             (BX2_DMAN_B11_BASE +BX2_ BX_WPTR)
+#define  BX2_B11_RPTR             (BX2_DMAN_B11_BASE +BX2_ BX_RPTR)
+#define  BX2_B11_EXPCTD_WPTR      (BX2_DMAN_B11_BASE +BX2_ BX_EXPCTD_WPTR)
+#define  BX2_B11_EXPCTD_RPTR      (BX2_DMAN_B11_BASE +BX2_ BX_EXPCTD_RPTR)
+#define  BX2_B11_SNIFER_OUT_ACC   (BX2_DMAN_B11_BASE +BX2_ BX_SNIFER_OUT_ACC)
+
+#define  BX2_B12_START_ADDR       (BX2_DMAN_B12_BASE +BX2_ BX_START_ADDR)
+#define  BX2_B12_SIZE             (BX2_DMAN_B12_BASE +BX2_ BX_SIZE)
+#define  BX2_B12_INC_PTR_CTL      (BX2_DMAN_B12_BASE +BX2_ BX_INC_PTR_CTL)
+#define  BX2_B12_EXT_INC_DIR      (BX2_DMAN_B12_BASE +BX2_ BX_EXT_INC_DIR)
+#define  BX2_B12_FULL_EMPTY_CTL   (BX2_DMAN_B12_BASE +BX2_ BX_FULL_EMPTY_CTL)
+#define  BX2_B12_WPTR             (BX2_DMAN_B12_BASE +BX2_ BX_WPTR)
+#define  BX2_B12_RPTR             (BX2_DMAN_B12_BASE +BX2_ BX_RPTR)
+#define  BX2_B12_EXPCTD_WPTR      (BX2_DMAN_B12_BASE +BX2_ BX_EXPCTD_WPTR)
+#define  BX2_B12_EXPCTD_RPTR      (BX2_DMAN_B12_BASE +BX2_ BX_EXPCTD_RPTR)
+#define  BX2_B12_SNIFER_OUT_ACC   (BX2_DMAN_B12_BASE +BX2_ BX_SNIFER_OUT_ACC)
+
+#define  BX2_B13_START_ADDR       (BX2_DMAN_B13_BASE +BX2_ BX_START_ADDR)
+#define  BX2_B13_SIZE             (BX2_DMAN_B13_BASE +BX2_ BX_SIZE)
+#define  BX2_B13_INC_PTR_CTL      (BX2_DMAN_B13_BASE +BX2_ BX_INC_PTR_CTL)
+#define  BX2_B13_EXT_INC_DIR      (BX2_DMAN_B13_BASE +BX2_ BX_EXT_INC_DIR)
+#define  BX2_B13_FULL_EMPTY_CTL   (BX2_DMAN_B13_BASE +BX2_ BX_FULL_EMPTY_CTL)
+#define  BX2_B13_WPTR             (BX2_DMAN_B13_BASE +BX2_ BX_WPTR)
+#define  BX2_B13_RPTR             (BX2_DMAN_B13_BASE +BX2_ BX_RPTR)
+#define  BX2_B13_EXPCTD_WPTR      (BX2_DMAN_B13_BASE +BX2_ BX_EXPCTD_WPTR)
+#define  BX2_B13_EXPCTD_RPTR      (BX2_DMAN_B13_BASE +BX2_ BX_EXPCTD_RPTR)
+#define  BX2_B13_SNIFER_OUT_ACC   (BX2_DMAN_B13_BASE +BX2_ BX_SNIFER_OUT_ACC)
+
+#define  BX2_B14_START_ADDR       (BX2_DMAN_B14_BASE +BX2_ BX_START_ADDR)
+#define  BX2_B14_SIZE             (BX2_DMAN_B14_BASE +BX2_ BX_SIZE)
+#define  BX2_B14_INC_PTR_CTL      (BX2_DMAN_B14_BASE +BX2_ BX_INC_PTR_CTL)
+#define  BX2_B14_EXT_INC_DIR      (BX2_DMAN_B14_BASE +BX2_ BX_EXT_INC_DIR)
+#define  BX2_B14_FULL_EMPTY_CTL   (BX2_DMAN_B14_BASE +BX2_ BX_FULL_EMPTY_CTL)
+#define  BX2_B14_WPTR             (BX2_DMAN_B14_BASE +BX2_ BX_WPTR)
+#define  BX2_B14_RPTR             (BX2_DMAN_B14_BASE +BX2_ BX_RPTR)
+#define  BX2_B14_EXPCTD_WPTR      (BX2_DMAN_B14_BASE +BX2_ BX_EXPCTD_WPTR)
+#define  BX2_B14_EXPCTD_RPTR      (BX2_DMAN_B14_BASE +BX2_ BX_EXPCTD_RPTR)
+#define  BX2_B14_SNIFER_OUT_ACC   (BX2_DMAN_B14_BASE +BX2_ BX_SNIFER_OUT_ACC)
+
+#define  BX2_B15_START_ADDR       (BX2_DMAN_B15_BASE +BX2_ BX_START_ADDR)
+#define  BX2_B15_SIZE             (BX2_DMAN_B15_BASE +BX2_ BX_SIZE)
+#define  BX2_B15_INC_PTR_CTL      (BX2_DMAN_B15_BASE +BX2_ BX_INC_PTR_CTL)
+#define  BX2_B15_EXT_INC_DIR      (BX2_DMAN_B15_BASE +BX2_ BX_EXT_INC_DIR)
+#define  BX2_B15_FULL_EMPTY_CTL   (BX2_DMAN_B15_BASE +BX2_ BX_FULL_EMPTY_CTL)
+#define  BX2_B15_WPTR             (BX2_DMAN_B15_BASE +BX2_ BX_WPTR)
+#define  BX2_B15_RPTR             (BX2_DMAN_B15_BASE +BX2_ BX_RPTR)
+#define  BX2_B15_EXPCTD_WPTR      (BX2_DMAN_B15_BASE +BX2_ BX_EXPCTD_WPTR)
+#define  BX2_B15_EXPCTD_RPTR      (BX2_DMAN_B15_BASE +BX2_ BX_EXPCTD_RPTR)
+#define  BX2_B15_SNIFER_OUT_ACC   (BX2_DMAN_B15_BASE +BX2_ BX_SNIFER_OUT_ACC)
+
+
+#define  BX2_QPUSH_DSK_BASE       0x1000
+#define  BX2_QPUSH_DSC_EXT_PTR    (BX2_QPUSH_DSK_BASE + 0x0)  
+#define  BX2_QPUSH_DSC_INT_PTR    (BX2_QPUSH_DSK_BASE + 0x4)
+#define  BX2_QPUSH_DSC_TCTL       (BX2_QPUSH_DSK_BASE + 0x8)
+#define  BX2_QPUSH_DSC_TFRAME_LEN (BX2_QPUSH_DSK_BASE + 0xc)
+#define  BX2_QPUSH_NUM            (BX2_QPUSH_DSK_BASE + 0x10)
+
+
+#define  BX2_QMAN_BMAN_CTL_BASE   0x1080
+#define  BX2_QMAN_ACTIVE_REG      (BX2_QMAN_BMAN_CTL_BASE + 0x0)
+#define  BX2_BMAN_IRQ_CFG_REG     (BX2_QMAN_BMAN_CTL_BASE + 0x4)  
+#define  BX2_BMAN_IRQ_ADDR        (BX2_QMAN_BMAN_CTL_BASE + 0x8)
+#define  BX2_DSP_PKT_SIZE         (BX2_QMAN_BMAN_CTL_BASE + 0xc)
+#define  BX2_QMAN_IRQ_MASK        (BX2_QMAN_BMAN_CTL_BASE + 0x10)
+#define  BX2_QBMAN_IRQ_STATUS     (BX2_QMAN_BMAN_CTL_BASE + 0x14)
+#define  BX2_QMAN_RST             (BX2_QMAN_BMAN_CTL_BASE + 0x18)
+#define  BX2_BMAN_RST             (BX2_QMAN_BMAN_CTL_BASE + 0x1c)
+#define  BX2_QMAN_OP_MODE         (BX2_QMAN_BMAN_CTL_BASE + 0x20)
+#define  BX2_BMAN_OP_MODE         (BX2_QMAN_BMAN_CTL_BASE + 0x24)
+#define  BX2_QMAN_V_S             (BX2_QMAN_BMAN_CTL_BASE + 0x30)
+
+//Power Scaling Unit 
+#define BX2_PSVM                0x0E50
+#define BX2_PGR                 0x0E54
