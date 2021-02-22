@@ -247,7 +247,8 @@ struct fw_rsc_trace {
  */
 METAL_PACKED_BEGIN
 struct fw_rsc_vdev_vring {
-	uint32_t da;
+	uint64_t u74_da;
+	uint32_t bx2_da;
 	uint32_t align;
 	uint32_t num;
 	uint32_t notifyid;

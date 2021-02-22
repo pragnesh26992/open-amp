@@ -930,7 +930,7 @@ remoteproc_create_virtio(struct remoteproc *rproc,
 
 		vring_rsc = &vdev_rsc->vring[i];
 		notifyid = vring_rsc->notifyid;
-		da = vring_rsc->da;
+		da = vring_rsc->u74_da;
 		num_descs = vring_rsc->num;
 		align = vring_rsc->align;
 		size = vring_size(num_descs, align);
