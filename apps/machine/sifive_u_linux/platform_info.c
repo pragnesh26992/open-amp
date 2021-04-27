@@ -36,6 +36,7 @@
  * 0x3_0080_0000 + 0x40_0000
  */
 #define IPI_DEV_NAME        "300c00000.ipi" /* IPI device name */
+#define IPI_ACK_DEV_NAME        "4f0010000.ipiack" /* IPI ack device name */
 
 #define DEV_BUS_NAME        "platform" /* device bus name. "platform" bus
                                         * is used in Linux kernel for generic
@@ -59,6 +60,8 @@ struct remoteproc_priv rproc_priv = {
 #ifndef RPMSG_NO_IPI
 	.ipi_name = IPI_DEV_NAME,
 	.ipi_bus_name = DEV_BUS_NAME,
+	.ipi_ack_name = IPI_ACK_DEV_NAME,
+	.ipi_ack_bus_name = DEV_BUS_NAME,
 #endif /* !RPMSG_NO_IPI */
 #ifdef RPMSG_NO_IPI
 	.shm_poll_name = POLL_DEV_NAME,
@@ -223,7 +226,8 @@ int platform_poll(void *priv)
 		}
 #else
 		flags = metal_irq_save_disable();
-		if (!(atomic_flag_test_and_set(&prproc->ipi_nokick))) {
+//		if (!(atomic_flag_test_and_set(&prproc->ipi_nokick))) {
+		if (!(atomic_load(&prproc->ipi_nokick))) {
 			metal_irq_restore_enable(flags);
 			ret = remoteproc_get_notification(rproc,
 							  RSC_NOTIFY_ID_ANY);

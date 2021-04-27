@@ -109,6 +109,7 @@ int app (struct rpmsg_device *rdev, void *priv)
 	}
 	max_size -= sizeof(struct _payload);
 	num_payloads = max_size - PAYLOAD_MIN_SIZE + 1;
+	LPRINTF(" num_payloads ======== %d\r\n", num_payloads);
 	i_payload =
 	    (struct _payload *)metal_allocate_memory(2 * sizeof(unsigned long) +
 				      max_size);

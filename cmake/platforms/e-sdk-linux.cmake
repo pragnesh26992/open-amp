@@ -1,6 +1,6 @@
 set (CMAKE_SYSTEM_PROCESSOR "riscv")
 set (CROSS_PREFIX           "riscv64-unknown-linux-gnu-")
-set (CMAKE_C_FLAGS          "-latomic -DRPMSG_NO_IPI"               CACHE STRING "")
+set (CMAKE_C_FLAGS          "-latomic"               CACHE STRING "")
 set (MACHINE                "sifive_u_linux" CACHE STRING "")
 
 include (cross_linux_gcc)
