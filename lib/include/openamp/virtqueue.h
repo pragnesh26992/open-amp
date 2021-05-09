@@ -47,6 +47,7 @@ extern "C" {
 /* Support to suppress interrupt until specific index is reached. */
 #define VIRTIO_RING_F_EVENT_IDX        (1 << 29)
 
+#define VQUEUE_DEBUG
 struct virtqueue_buf {
 	void *buf;
 	int len;
@@ -112,6 +113,7 @@ struct vring_alloc_info {
 typedef void (*vq_callback)(struct virtqueue *);
 typedef void (*vq_notify)(struct virtqueue *);
 
+
 #ifdef VQUEUE_DEBUG
 #include <metal/log.h>
 #include <metal/assert.h>
@@ -119,11 +121,12 @@ typedef void (*vq_notify)(struct virtqueue *);
 #define VQASSERT(_vq, _exp, _msg) \
 	do { \
 		if (!(_exp)) { \
+			printf("____ %s: %s\n", __func__, (_vq)->vq_name); \
 			metal_log(METAL_LOG_EMERGENCY, \
-				  "%s: %s - "_msg, __func__, (_vq)->vq_name); \
+				  "%s: %s - ", __func__, (_vq)->vq_name); \
 			metal_assert(_exp); \
 		} \
-	} while (0)
+	} while (0);
 
 #define VQ_RING_ASSERT_VALID_IDX(_vq, _idx)            \
 	VQASSERT((_vq), (_idx) < (_vq)->vq_nentries, "invalid ring index")

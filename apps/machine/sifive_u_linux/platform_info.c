@@ -217,26 +217,33 @@ int platform_poll(void *priv)
 	while(1) {
 #ifdef RPMSG_NO_IPI
 		(void)flags;
-		if (metal_io_read32(prproc->shm_poll_io, 0)) {
+		if (metal_io_read32(prproc->shm_poll_io, 4)) {
+			metal_io_write32(prproc->shm_poll_io, 4, 0x0);
 			ret = remoteproc_get_notification(rproc,
 							  RSC_NOTIFY_ID_ANY);
-			if (ret)
+			if (ret) {
+				printf("%s error", __func__);
 				return ret;
+			}
+			usleep(2000000);
 			break;
 		}
 #else
-		flags = metal_irq_save_disable();
+//		flags = metal_irq_save_disable();
 //		if (!(atomic_flag_test_and_set(&prproc->ipi_nokick))) {
 		if (!(atomic_load(&prproc->ipi_nokick))) {
-			metal_irq_restore_enable(flags);
+//			metal_irq_restore_enable(flags);
+			usleep(2000000);
 			ret = remoteproc_get_notification(rproc,
 							  RSC_NOTIFY_ID_ANY);
-			if (ret)
+			if (ret) {
+				printf("%s error", __func__);
 				return ret;
+			}
 			break;
 		}
-		_rproc_wait();
-		metal_irq_restore_enable(flags);
+//		_rproc_wait();
+//		metal_irq_restore_enable(flags);
 #endif /* RPMSG_NO_IPI */
 	}
 	return 0;
