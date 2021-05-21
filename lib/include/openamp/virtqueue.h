@@ -123,7 +123,7 @@ typedef void (*vq_notify)(struct virtqueue *);
 				  "%s: %s - "_msg, __func__, (_vq)->vq_name); \
 			metal_assert(_exp); \
 		} \
-	} while (0)
+	} while (0);
 
 #define VQ_RING_ASSERT_VALID_IDX(_vq, _idx)            \
 	VQASSERT((_vq), (_idx) < (_vq)->vq_nentries, "invalid ring index")
