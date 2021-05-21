@@ -22,12 +22,16 @@ extern "C" {
 struct remoteproc_priv {
 	const char *ipi_name; /**< IPI device name */
 	const char *ipi_bus_name; /**< IPI bus name */
+	const char *ipi_ack_name; /**< IPI ack device name */
+	const char *ipi_ack_bus_name; /**< IPI ack bus name */
 	const char *rsc_name; /**< rsc device name */
 	const char *rsc_bus_name; /**< rsc bus name */
 	const char *shm_name; /**< shared memory device name */
 	const char *shm_bus_name; /**< shared memory bus name */
 	struct metal_device *ipi_dev; /**< pointer to IPI device */
 	struct metal_io_region *ipi_io; /**< pointer to IPI i/o region */
+	struct metal_device *ipi_ack_dev; /**< pointer to IPI ack device */
+	struct metal_io_region *ipi_ack_io; /**< pointer to IPI ack i/o region */
 	struct metal_device *shm_dev; /**< pointer to shared memory device */
 	struct metal_io_region *shm_io; /**< pointer to shared memory i/o
 						 region */
@@ -42,7 +46,7 @@ struct remoteproc_priv {
 };
 
 #ifdef RPMSG_NO_IPI
-#define POLL_DEV_NAME        "838600000.shm" /* shared device name */
+#define POLL_DEV_NAME        "849400000.shm" /* shared device name */
 #define POLL_STOP 0x1U
 #endif /* RPMSG_NO_IPI */
 

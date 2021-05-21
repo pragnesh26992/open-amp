@@ -36,6 +36,7 @@
  * 0x3_0080_0000 + 0x40_0000
  */
 #define IPI_DEV_NAME        "300c00000.ipi" /* IPI device name */
+#define IPI_ACK_DEV_NAME        "4f0010000.ipiack" /* IPI ack device name */
 
 #define DEV_BUS_NAME        "platform" /* device bus name. "platform" bus
                                         * is used in Linux kernel for generic
@@ -44,14 +45,14 @@
 /* libmetal devices names used in the examples.
  * They are platform devices, you find them in Linux sysfs
  * sys/bus/platform/devices */
-#define SHM_DEV_NAME        "8384e0000.shm" /* shared device name */
+#define SHM_DEV_NAME        "847600000.shm" /* shared device name */
 
-#define RSC_MEM_PA          0x8384E0000UL
+#define RSC_MEM_PA          0x847600000UL
 #define RSC_MEM_SIZE        0x2000UL
-#define VRING_MEM_PA        0x838500000UL
+#define VRING_MEM_PA        0x847620000UL
 #define VRING_MEM_SIZE      0x8000UL
-#define SHARED_BUF_PA       0x838508000UL
-#define SHARED_BUF_SIZE     0x40000UL
+#define SHARED_BUF_PA       0x847628000UL
+#define SHARED_BUF_SIZE     0x200000UL
 
 struct remoteproc_priv rproc_priv = {
 	.shm_name = SHM_DEV_NAME,
@@ -59,6 +60,8 @@ struct remoteproc_priv rproc_priv = {
 #ifndef RPMSG_NO_IPI
 	.ipi_name = IPI_DEV_NAME,
 	.ipi_bus_name = DEV_BUS_NAME,
+	.ipi_ack_name = IPI_ACK_DEV_NAME,
+	.ipi_ack_bus_name = DEV_BUS_NAME,
 #endif /* !RPMSG_NO_IPI */
 #ifdef RPMSG_NO_IPI
 	.shm_poll_name = POLL_DEV_NAME,
@@ -214,25 +217,33 @@ int platform_poll(void *priv)
 	while(1) {
 #ifdef RPMSG_NO_IPI
 		(void)flags;
-		if (metal_io_read32(prproc->shm_poll_io, 0)) {
+		if (metal_io_read32(prproc->shm_poll_io, 4)) {
+			//metal_io_write32(prproc->shm_poll_io, 4, 0x0);
 			ret = remoteproc_get_notification(rproc,
 							  RSC_NOTIFY_ID_ANY);
-			if (ret)
+			if (ret) {
+				printf("%s error", __func__);
 				return ret;
+			}
+			usleep(2000000);
 			break;
 		}
 #else
-		flags = metal_irq_save_disable();
-		if (!(atomic_flag_test_and_set(&prproc->ipi_nokick))) {
-			metal_irq_restore_enable(flags);
+//		flags = metal_irq_save_disable();
+//		if (!(atomic_flag_test_and_set(&prproc->ipi_nokick))) {
+		if (!(atomic_load(&prproc->ipi_nokick))) {
+//			metal_irq_restore_enable(flags);
 			ret = remoteproc_get_notification(rproc,
 							  RSC_NOTIFY_ID_ANY);
-			if (ret)
+			if (ret) {
+				printf("%s error", __func__);
 				return ret;
+			}
+			usleep(2000000);
 			break;
 		}
-		_rproc_wait();
-		metal_irq_restore_enable(flags);
+//		_rproc_wait();
+//		metal_irq_restore_enable(flags);
 #endif /* RPMSG_NO_IPI */
 	}
 	return 0;
