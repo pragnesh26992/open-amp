@@ -27,8 +27,10 @@ static int err_cnt;
 /* Globals */
 static struct rpmsg_endpoint lept;
 static struct _payload *i_payload;
-static int rnum = 0;
+int rnum = 0;
+int no_try = 0;
 static int err_cnt = 0;
+static int missing_payload = 0;
 static int ept_deleted = 0;
 
 /*-----------------------------------------------------------------------------*
@@ -59,7 +61,8 @@ static int rpmsg_endpoint_cb(struct rpmsg_endpoint *ept, void *data, size_t len,
 			break;
 		}
 	}
-	rnum = r_payload->num + 1;
+	//rnum = r_payload->num + 1;
+	rnum = 0x2;
 	return RPMSG_SUCCESS;
 }
 
@@ -105,6 +108,7 @@ int app (struct rpmsg_device *rdev, void *priv)
 	}
 	max_size -= sizeof(struct _payload);
 	num_payloads = max_size - PAYLOAD_MIN_SIZE + 1;
+	LPRINTF(" num_payloads = %d\r\n", num_payloads);
 	i_payload =
 	    (struct _payload *)metal_allocate_memory(2 * sizeof(unsigned long) +
 				      max_size);
@@ -126,6 +130,8 @@ int app (struct rpmsg_device *rdev, void *priv)
 
 	while (!is_rpmsg_ept_ready(&lept))
 		platform_poll(priv);
+
+	usleep(1000000);
 
 	LPRINTF("RPMSG endpoint is binded with remote.\r\n");
 	for (i = 0, size = PAYLOAD_MIN_SIZE; i < num_payloads; i++, size++) {
@@ -150,14 +156,24 @@ int app (struct rpmsg_device *rdev, void *priv)
 			(unsigned long)(2 * sizeof(unsigned long)) + size);
 
 		expect_rnum++;
+		rnum = 0x1;
+		no_try = 0x0;
 		do {
 			platform_poll(priv);
-		} while ((rnum < expect_rnum) && !err_cnt && !ept_deleted);
+			no_try++;
+
+			if (rnum == 0x2)
+				break;
+		} while (no_try <= 3 && !ept_deleted);
+
+		if (rnum == 0x1)
+			missing_payload++;
 
 	}
 
 	LPRINTF("**********************************\r\n");
 	LPRINTF(" Test Results: Error count = %d \r\n", err_cnt);
+	LPRINTF(" Test Results: Missing count = %d \r\n", missing_payload);
 	LPRINTF("**********************************\r\n");
 	/* Destroy the RPMsg endpoint */
 	rpmsg_destroy_ept(&lept);
@@ -188,7 +204,7 @@ int main(int argc, char *argv[])
 			ret = -1;
 		} else {
 			app(rpdev, platform);
-			platform_release_rpmsg_vdev(rpdev);
+			platform_release_rpmsg_vdev(rpdev, platform);
 			ret = 0;
 		}
 	}
